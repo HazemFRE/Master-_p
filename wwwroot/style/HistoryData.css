@@ -1,0 +1,770 @@
+﻿/* نظام الألوان */
+:root {
+    --primary-color: #2c5530; /* لون أخضر داكن أساسي */
+    --primary-light: #3a6b3f; /* تدرج أخضر فاتح */
+    --secondary-color: #8ab17f; /* لون أخضر باهت */
+    --accent-color: #f9c74f; /* لون ذهبي */
+    --text-dark: #2d3436; /* لون نص داكن */
+    --text-medium: #636e72; /* لون نص متوسط */
+    --text-light: #f5f6fa; /* لون نص فاتح */
+    --bg-light: #f8f9fa; /* لون خلفية فاتح */
+    --border-color: #dfe6e9; /* لون حدود */
+    --success-color: #27ae60; /* لون نجاح */
+    --warning-color: #f39c12; /* لون تحذير */
+    --error-color: #e74c3c; /* لون خطأ */
+    /* التأثيرات */
+    --border-radius: 12px;
+    --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* إعادة تعيين وإعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    direction: rtl;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* شريط التنقل - تصميم عصري */
+/*.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 50px;
+    transition: var(--transition);
+}
+
+    .logo img:hover {
+        transform: scale(1.05);
+    }
+
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+}
+
+    .nav-links a {
+        color: var(--text-dark);
+        font-weight: 600;
+        font-size: 1.05rem;
+        position: relative;
+        padding: 0.5rem 0;
+        transition: var(--transition);
+    }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-light);
+    border-radius: 30px;
+    padding: 0.4rem 1rem;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+    .search-box:focus-within {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(44, 85, 48, 0.2);
+    }
+
+    .search-box input {
+        border: none;
+        background: transparent;
+        outline: none;
+        padding: 0.3rem;
+        width: 140px;
+        font-family: 'Cairo', sans-serif;
+    }
+
+.cart-icon, .user-icon {
+    position: relative;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    transition: var(--transition);
+}
+
+    .cart-icon:hover, .user-icon:hover {
+        color: var(--primary-color);
+    }
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-size: 0.7rem;
+    font-weight: bold;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+}
+
+.mobile-menu {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-dark);
+}*/
+
+/* قسم Hero - تصميم عصري */
+.history-hero {
+    height: 350px;
+    background: linear-gradient(135deg, rgba(44, 85, 48, 0.9) 0%, rgba(138, 177, 127, 0.9) 100%), url('IMG/olive-bg.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+    .history-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: radial-gradient(circle at 70% 50%, transparent 0%, rgba(0,0,0,0.2) 100%);
+    }
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-content p {
+        font-size: 1.3rem;
+        opacity: 0.9;
+        margin-bottom: 1.5rem;
+    }
+
+/* قسم سجل المشتريات - تصميم احترافي */
+.purchase-history {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+    .section-header h2 {
+        font-size: 2.2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+    }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+            border-radius: 2px;
+        }
+
+    .section-header p {
+        color: var(--text-medium);
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+/* فلترة البحث - تصميم متطور */
+.history-filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+    .filter-group label {
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 0.95rem;
+    }
+
+    .filter-group select {
+        padding: 0.6rem 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        background-color: white;
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: var(--transition);
+        min-width: 180px;
+    }
+
+        .filter-group select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(44, 85, 48, 0.2);
+            outline: none;
+        }
+
+/* بطاقات الطلبات - تصميم عصري */
+.purchase-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.purchase-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+    .purchase-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+
+.purchase-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    background-color: #fcfcfc;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.order-number {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.order-date {
+    color: var(--text-medium);
+    font-size: 0.85rem;
+}
+
+.order-status {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+}
+
+    .order-status.completed {
+        background-color: rgba(39, 174, 96, 0.1);
+        color: var(--success-color);
+    }
+
+    .order-status.processing {
+        background-color: rgba(243, 156, 18, 0.1);
+        color: var(--warning-color);
+    }
+
+    .order-status.cancelled {
+        background-color: rgba(231, 76, 60, 0.1);
+        color: var(--error-color);
+    }
+
+.purchase-items {
+    padding: 1.2rem 1.5rem;
+}
+
+.purchase-item {
+    display: flex;
+    gap: 1.2rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+    .purchase-item:last-child {
+        border-bottom: none;
+    }
+
+    .purchase-item img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+    }
+
+.item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+    .item-details h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-dark);
+    }
+
+    .item-details p {
+        color: var(--text-medium);
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+    }
+
+.price {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.purchase-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    background-color: #fafafa;
+    border-top: 1px solid var(--border-color);
+}
+
+.total-amount {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+    .total-amount .price {
+        font-size: 1.2rem;
+        margin-right: 0.5rem;
+    }
+
+.purchase-actions {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.btn-details, .btn-reorder, .btn-track {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-details {
+    background-color: #f5f5f5;
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+}
+
+    .btn-details:hover {
+        background-color: #e0e0e0;
+    }
+
+.btn-reorder {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid var(--primary-color);
+}
+
+    .btn-reorder:hover {
+        background-color: var(--primary-light);
+        transform: translateY(-2px);
+    }
+
+.btn-track {
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+    .btn-track:hover {
+        background-color: #f5f5f5;
+        transform: translateY(-2px);
+    }
+
+/* ترقيم الصفحات - تصميم عصري */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 3rem;
+}
+
+.page-btn {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    background-color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    color: var(--text-medium);
+}
+
+    .page-btn:hover:not(.active) {
+        background-color: #f5f5f5;
+        color: var(--primary-color);
+    }
+
+    .page-btn.active {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+        box-shadow: 0 4px 12px rgba(44, 85, 48, 0.2);
+    }
+
+    .page-btn.next {
+        width: auto;
+        padding: 0 1.2rem;
+        gap: 0.5rem;
+    }
+
+/* تذييل الصفحة - تصميم احترافي */
+/*.footer {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: var(--text-light);
+    padding: 4rem 0 2rem;
+    position: relative;
+}
+
+    .footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 10px;
+        background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+    }
+
+.containers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+    .footer-column h3::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        right: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--accent-color);
+        border-radius: 2px;
+    }
+
+.footer-column p {
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    line-height: 1.7;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+    .footer-column ul li {
+        margin-bottom: 0.8rem;
+    }
+
+        .footer-column ul li a {
+            color: var(--text-light);
+            opacity: 0.9;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+            .footer-column ul li a:hover {
+                opacity: 1;
+                color: var(--accent-color);
+                padding-right: 5px;
+            }
+
+            .footer-column ul li a i {
+                font-size: 0.8rem;
+            }
+
+.payment-methods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+    .payment-methods img {
+        height: 28px;
+        border-radius: 4px;
+        background-color: white;
+        padding: 0.2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+    }
+
+        .payment-methods img:hover {
+            transform: translateY(-3px);
+        }
+
+.footer-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    color: white;
+    font-size: 1.1rem;
+}
+
+    .social-icon:hover {
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        transform: translateY(-3px);
+    }
+
+.footer-bottom p {
+    opacity: 0.8;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-bottom a {
+    color: var(--accent-color);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+    .footer-bottom a:hover {
+        opacity: 0.9;
+        text-decoration: underline;
+    }*/
+
+/* تأثيرات الحركة والتفاعلات */
+/*@media (hover: hover) {
+    .purchase-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .btn-reorder:hover, .btn-track:hover {
+        transform: translateY(-2px);
+    }
+
+    .social-icon:hover {
+        transform: translateY(-3px);
+    }
+}*/
+
+/* التنسيقات المتجاوبة */
+/*@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 2.4rem;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .history-filters {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+
+        .filter-group select {
+            width: 100%;
+        }
+
+    .purchase-footer {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .purchase-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .btn-details, .btn-reorder, .btn-track {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .footer-column {
+        text-align: center;
+    }
+
+        .footer-column h3::after {
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+    .payment-methods {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav-container {
+        padding: 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .purchase-item {
+        flex-direction: column;
+    }
+
+        .purchase-item img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+        }
+}*/

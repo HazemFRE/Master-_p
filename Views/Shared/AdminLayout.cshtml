@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة العملاء - لوحة التحكم</title>
+    <link rel="stylesheet" href="~/style/admin-dashboard.css">
+    <link rel="stylesheet" href="~/style/admin-customers.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="admin-container">
+        <!-- القائمة الجانبية -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>لوحة التحكم</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-home"></i>
+                            <span>الرئيسية</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-products.html">
+                            <i class="fas fa-box"></i>
+                            <span>المنتجات</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-orders.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>الطلبات</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="admin-customers.html">
+                            <i class="fas fa-users"></i>
+                            <span>العملاء</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-categories.html">
+                            <i class="fas fa-tags"></i>
+                            <span>التصنيفات</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-reviews.html">
+                            <i class="fas fa-star"></i>
+                            <span>التقييمات</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span>الإعدادات</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>تسجيل الخروج</span>
+                </a>
+            </div>
+        </aside>
+
+     @RenderBody()
+    </div>
+
+    <!-- نافذة عرض تفاصيل العميل -->
+    <div class="modal" id="customer-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">تفاصيل العميل</h3>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="customer-details">
+                    <div class="detail-group">
+                        <label>الاسم:</label>
+                        <span id="customer-name"></span>
+                    </div>
+                    <div class="detail-group">
+                        <label>البريد الإلكتروني:</label>
+                        <span id="customer-email"></span>
+                    </div>
+                    <div class="detail-group">
+                        <label>رقم الهاتف:</label>
+                        <span id="customer-phone"></span>
+                    </div>
+                    <div class="detail-group">
+                        <label>تاريخ التسجيل:</label>
+                        <span id="customer-register-date"></span>
+                    </div>
+                    <div class="detail-group">
+                        <label>الحالة:</label>
+                        <span id="customer-status"></span>
+                    </div>
+                </div>
+                <div class="customer-orders">
+                    <h4>طلبات العميل</h4>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>رقم الطلب</th>
+                                <th>التاريخ</th>
+                                <th>المبلغ</th>
+                                <th>الحالة</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customer-orders-list">
+                            <!-- سيتم تعبئة هذا القسم ديناميكياً -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn close-modal">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة إضافة/تعديل العميل -->
+    <div class="modal" id="edit-customer-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="edit-modal-title">إضافة عميل جديد</h3>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-customer-form">
+                    <div class="form-group">
+                        <label for="customer-name-input">الاسم</label>
+                        <input type="text" id="customer-name-input" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-email-input">البريد الإلكتروني</label>
+                        <input type="email" id="customer-email-input" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-phone-input">رقم الهاتف</label>
+                        <input type="tel" id="customer-phone-input" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-status-input">الحالة</label>
+                        <select id="customer-status-input" name="status" required>
+                            <option value="active">نشط</option>
+                            <option value="inactive">غير نشط</option>
+                            <option value="blocked">محظور</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-notes">ملاحظات</label>
+                        <textarea id="customer-notes" name="notes" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn" id="cancel-edit">إلغاء</button>
+                <button class="primary-btn" id="save-customer">حفظ</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin-dashboard.js"></script>
+    <script src="js/admin-customers.js"></script>
+</body>
+
+</html>

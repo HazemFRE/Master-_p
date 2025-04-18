@@ -1,0 +1,145 @@
+﻿@model Master__p.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/style/Details.css" />
+}
+
+<!-- Product Detail Section -->
+<section class="product-detail">
+    <div class="product-container">
+        <!-- Product Gallery -->
+        <div class="product-gallery" style="width: 450px;">
+            <div class="main-image">
+                <img src="@Model.Image" alt="@Model.Name" />
+            </div>
+            <div class="thumbnail-images">
+                @if (Model.Image != null && Model.Image.Any())
+                {
+                    foreach (var img in Model.Image)
+                    {
+                        <img src="@img" alt="@Model.Name" />
+                    }
+                }
+                else
+                {
+                    <img src="@Model.Image" alt="@Model.Name" />
+                }
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info" style="display:block">
+            <span class="product-badge">منتج طبيعي 100%</span>
+            <h1>@Model.Name</h1>
+            <div class="product-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span>(5.0 - 95 تقييم)</span>
+            </div>
+            <div class="product-price">
+                <span class="old-price">200 د.أ</span>
+                <span class="current-price">@Model.Price</span>
+                <span class="currency">د.أ</span>
+                <span class="discount">-10%</span>
+            </div>
+            <p class="product-description">
+                @Model.Description
+            </p>
+
+            <div class="product-features">
+                <div class="feature">
+                    <i class="fas fa-leaf"></i>
+                    <span>طبيعي 100%</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-certificate"></i>
+                    <span>معتمد من وزارة الصحة</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-box"></i>
+                    <span>عبوة 250 جرام</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-clock"></i>
+                    <span>صالح لمدة سنة</span>
+                </div>
+            </div>
+
+            <!-- Product Options -->
+            <form asp-action="AddToCart" method="post">
+                <input type="hidden" name="productId" value="@Model.Id" />
+                <div class="product-options">
+                    <div class="option-group">
+                        <label>الحجم</label>
+                        <div class="option-buttons">
+                            <button type="button" class="option-btn active">250 جرام</button>
+                            <button type="button" class="option-btn">500 جرام</button>
+                            <button type="button" class="option-btn">1 كيلوجرام</button>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <label>الكمية</label>
+                        <div class="quantity-selector">
+                            <button type="button" class="qty-btn decrease-qty">-</button>
+                            <input type="number" name="quantity" class="qty-input" value="1" min="1">
+                            <button type="button" class="qty-btn increase-qty">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Actions -->
+                <div class="product-actions">
+                    <button type="submit" class="add-to-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        إضافة إلى السلة
+                    </button>
+                    <button type="button" class="buy-now">
+                        <i class="fas fa-bolt"></i>
+                        شراء الآن
+                    </button>
+                    <button type="button" class="wishlist">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Product Meta -->
+            <div class="product-meta">
+                <div class="meta-item">
+                    <i class="fas fa-truck"></i>
+                    <span>شحن مجاني للطلبات فوق 200 دينار</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-undo"></i>
+                    <span>ضمان استرجاع خلال 14 يوم</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>دفع آمن 100%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.querySelector('.increase-qty').addEventListener('click', function () {
+            var input = document.querySelector('.qty-input');
+            input.value = parseInt(input.value) + 1;
+        });
+
+        document.querySelector('.decrease-qty').addEventListener('click', function () {
+            var input = document.querySelector('.qty-input');
+            if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        });
+    </script>
+}

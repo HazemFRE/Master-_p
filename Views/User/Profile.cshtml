@@ -1,0 +1,145 @@
+﻿@{
+    ViewData["Title"] = "الملف الشخصي";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="@Url.Content("~/css/StyleSheetProfile.css")" />
+    <style>
+        .container {
+             max-width: 100% !important;  
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+   
+}
+
+<section class="profile-page">
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-9">
+                <div class="profile-card shadow-lg">
+                    <!-- رأس البروفايل -->
+                    <div class="profile-header">
+                        <img src="https://i.pinimg.com/originals/09/21/fc/0921fc87aa989330b8d403014bf4f340.jpg"
+                             alt="صورة البروفايل"
+                             class="profile-image">
+
+                        <h1 class="profile-title">قطرة نقاء</h1>
+                        <p class="profile-subtitle">منتجات طبيعية 100% من خيرات الأرض</p>
+                        <div class="mt-3">
+                            <a asp-action="ChangePassword" asp-controller="User" class="btn btn-primary">
+                                <i class="fas fa-user-edit"></i> تغيير كلمة السر 
+                            </a>
+                        </div>
+                    </div>
+
+                        <div class="mt-3">
+                            <a asp-action="EditProfile" asp-controller="User" class="btn btn-primary">
+                                <i class="fas fa-user-edit"></i> تعديل الملف الشخصي
+                            </a>
+
+                            <span class="badge-natural">
+                                <i class="fas fa-leaf"></i> طبيعي بالكامل
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- الإحصائيات -->
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">منتجات</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">320</div>
+                            <div class="stat-label">عملاء سعداء</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">150</div>
+                            <div class="stat-label">طلبات مكتملة</div>
+                        </div>
+                    </div>
+
+                    <!-- المحتوى الرئيسي -->
+                    <div class="profile-content">
+                        <!-- حول المشروع -->
+                        <div class="mb-5">
+                            <h3 class="section-title">حول المشروع</h3>
+                            <div class="about-content">
+                                <p class="about-text">
+                                    <i class="fas fa-seedling"></i>
+                                    <span><strong>قطرة نقاء</strong> هي علامة تجارية تقدم أجود المنتجات الطبيعية المستخلصة من شجرة الزيتون المباركة.</span>
+                                </p>
+                                <p class="about-text">
+                                    <i class="fas fa-heart"></i>
+                                    <span>نحرص على تقديم منتجات طبيعية 100% خالية من أي إضافات كيميائية، مع الحفاظ على الجودة العالية والقيمة الغذائية.</span>
+                                </p>
+                                <p class="about-text">
+                                    <i class="fas fa-award"></i>
+                                    <span>جميع منتجاتنا مصنوعة بأيدي أردنية خبيرة، مع ضمان الجودة والتميز في كل قطرة 💚</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- المنتجات -->
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h3 class="section-title">أحدث المنتجات</h3>
+                                <a href="#!" class="view-all">
+                                    عرض الكل <i class="fas fa-arrow-left"></i>
+                                </a>
+                            </div>
+
+                            <div class="product-grid">
+                                <div class="product-card">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjhOAYWpvCq4uwd4V9Z0gF1Y_W97nEaNe53Q&s"
+                                         alt="زيت زيتون بكر ممتاز"
+                                         class="product-image">
+                                    <div class="product-info">
+                                        <div class="product-name">زيت زيتون بكر</div>
+                                        <div class="product-price">25 دينار</div>
+                                    </div>
+                                </div>
+
+                                <div class="product-card">
+                                    <img src="https://i.pinimg.com/736x/eb/39/48/eb39485ca691eb343b471495d934b6bf.jpg"
+                                         alt="زيتون رصيع"
+                                         class="product-image">
+                                    <div class="product-info">
+                                        <div class="product-name">رصيع زيتون بلدي</div>
+                                        <div class="product-price">7 دينار</div>
+                                    </div>
+                                </div>
+
+                                <div class="product-card">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCLfnF-QlF9daKPwmQgiGanu9gDD0ipnZU0g&s"
+                                         alt="سلطة الزيتون بمذاق رائع"
+                                         class="product-image">
+                                    <div class="product-info">
+                                        <div class="product-name">سلطة الزيتون</div>
+                                        <div class="product-price">12 دينار</div>
+                                    </div>
+                                </div>
+
+                                <div class="product-card">
+                                    <img src="~/IMG/6033084928436061920.jpg"
+                                         alt="عبوة زيت مميزة"
+                                         class="product-image">
+                                    <div class="product-info">
+                                        <div class="product-name">عبوة مميزة</div>
+                                        <div class="product-price">30 دينار</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

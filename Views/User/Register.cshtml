@@ -1,0 +1,110 @@
+﻿@model Master__p.Models.Userss
+
+@{
+    ViewData["Title"] = "Register";
+}
+@section Styles {
+	<link rel="stylesheet" href="~/css/StyleSheet.css" />
+}
+
+<h1>Register</h1>
+
+<div class="registration-page">
+    <div class="left-section">
+        <div class="content-wrapper">
+            <img src="https://i.pinimg.com/736x/5f/46/5b/5f465ba38272c67c2fadce8c17068226.jpg" alt="قطرة نقاء"
+                 class="brand-logo" style="width: 400px;border-radius: 5%;">
+            <h1>مرحباً بك في عائلة قطرة نقاء</h1>
+            <p>انضم إلينا اليوم واحصل على:</p>
+            <ul class="benefits-list">
+                <li><i class="fas fa-check-circle"></i> خصم 10% على أول طلب</li>
+                <li><i class="fas fa-check-circle"></i> شحن مجاني للطلبات فوق 50 دينار</li>
+                <li><i class="fas fa-check-circle"></i> عروض حصرية للأعضاء</li>
+                <li><i class="fas fa-check-circle"></i> نقاط مكافآت على كل طلب</li>
+            </ul>
+            <div class="testimonial">
+                <p>"أفضل زيت زيتون جربته في حياتي!"</p>
+                <div class="user-info">
+                    <img src="/IMG/user-avatar.jpg" alt="صورة العميل">
+                    <span>أحمد محمد</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-section">
+        <form asp-action="Register" method="post">
+            <h2>إنشاء حساب جديد</h2>
+
+            <div class="form-group">
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input asp-for="Username" class="form-control" placeholder="الاسم الكامل" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="البريد الإلكتروني" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-with-icon">
+                    <i class="fas fa-phone"></i>
+                    <input asp-for="Phone" type="tel" class="form-control" placeholder="رقم الهاتف" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="كلمة المرور" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-with-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input asp-for="Address" class="form-control" placeholder="العنوان" />
+                </div>
+            </div>
+
+            <div class="terms-check">
+                <label class="custom-checkbox">
+                    <input type="checkbox" required>
+                    <span class="checkmark"></span>
+                    <span>أوافق على <a href="#">الشروط والأحكام</a></span>
+                </label>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                إنشاء حساب
+                <i class="fas fa-arrow-left"></i>
+            </button>
+
+            <div class="social-login">
+                <span class="divider">أو</span>
+                <button type="button" class="google-btn">
+                    <img src="/IMG/google.png" alt="Google">
+                    المتابعة باستخدام Google
+                </button>
+                <button type="button" class="facebook-btn">
+                    <img src="/IMG/facebook.png" alt="Facebook">
+                    المتابعة باستخدام Facebook
+                </button>
+            </div>
+
+            <p class="login-link">
+                لديك حساب بالفعل؟ <a href="/Userss/Login">تسجيل الدخول</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

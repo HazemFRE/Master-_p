@@ -1,0 +1,28 @@
+﻿@model List<Master__p.Models.Product>
+@{
+    ViewData["Title"] = "التحف الأثرية";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/style/antiques.css" />
+}
+
+<h1 class="page-title">التحف الأثرية المصنوعة من خشب الزيتون</h1>
+
+<div class="antiques-container">
+    @foreach (var item in Model)
+    {
+        <div class="antique-item">
+            <img src="@item.Image" alt="@item.Name" class="antique-img">
+            <h3>@item.Name</h3>
+            <p>@item.Description</p>
+            <p><strong>السعر:</strong> @item.Price د.أ</p>
+
+            <form asp-action="AddToCart" method="post">
+                <input type="hidden" name="productId" value="@item.Id" />
+                <input type="hidden" name="quantity" value="1" />
+                <button type="submit" class="add-to-cart">أضف إلى السلة</button>
+            </form>
+        </div>
+    }
+</div>

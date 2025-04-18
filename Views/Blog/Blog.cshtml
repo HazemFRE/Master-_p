@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Master__p.Models.Postss>
+
+@section Styles {
+    <link href="~/style/blog.css" rel="stylesheet" />
+}
+
+<div class="container">
+    <h1 class="blog-title">مدونة قطرة نقاء</h1>
+
+    @foreach (var post in Model)
+    {
+        <div class="blog-card">
+            <img src="@post.Image" alt="@post.Title" class="blog-image" />
+            <div class="blog-content">
+                <h2>@post.Title</h2>
+                <p>@post.Body</p>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HazemMaster</title>
+    <title>زيت الزيتون بالنكهات - قطرة نقاء</title>
+	<link rel="stylesheet" href="~/style/home.css">
+	<link href="~/style/antiques.css" rel="stylesheet" />
+	<link href="~/style/aboutus.css" rel="stylesheet" />
+	<link href="~/style/blog.css" rel="stylesheet" />
+	<link href="~/style/cart.css" rel="stylesheet" />
+	<link href="~/style/contactus.css" rel="stylesheet" />
+	<link href="~/style/farm-consulting.css" rel="stylesheet" />
+	<link href="~/style/home3.css" rel="stylesheet" />
+	<link href="~/style/homepage1.css" rel="stylesheet" />
+	<link href="~/style/homepage2.css" rel="stylesheet" />
+	<link href="~/style/homepage4.css" rel="stylesheet" />
+	<link href="~/style/login.css" rel="stylesheet" />
+	<link href="~/style/olive-honey.css" rel="stylesheet" />
+	<link href="~/style/olive-leaf-tea.css" rel="stylesheet" />
+	<link href="~/style/registration.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link href="~/css/stylesheet.css" rel="stylesheet" />
+    @RenderSection("styles", required: false)
+
+    
+
+
+</head>
+<body>
+    <header>
+        <!-- Navbar المحدث -->
+        <nav class="navbar" style="
+    background-color: green;
+">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <img src="/IMG/download.png" alt="قطرة نقاء" class="logo">
+                </div>
+				<div class="nav-menu">
+                    <a asp-action="Index" asp-controller="Home" class="nav-link active">الرئيسية</a>
+                    <a href="/Product/Allproduct" class="nav-link active">منتجاتنا</a>
+                    <a asp-action="Antiques" asp-controller="Product" class="nav-link">التحف الاثرية </a>
+                    <a asp-action="Profile" asp-controller="User" class="nav-link">الملف الشخصي</a>
+                    <a asp-action="Blog" asp-controller="Blog" class="nav-link">المدونة</a>
+                    <a asp-action="AboutUs" asp-controller="Home" class="nav-link">من نحن</a>
+                    <a asp-action="ContactUs" asp-controller="Home" class="nav-link">تواصل معنا</a>
+                   
+                    @if (Context.Session.GetString("UserEmail") == null)
+                    {
+                        <a asp-action="Login" asp-controller="User" class="nav-link">تسجيل الدخول</a>
+                        <a asp-action="Register" asp-controller="User" class="nav-link"> انشاء حساب</a>
+                    }
+                    else{
+						
+						<a asp-action="Logout" asp-controller="User" class="nav-link">تسجيل الخروج</a>
+                    }
+
+                </div>
+                <div class="nav-tools">
+                    <div class="search-box">
+                        <input type="text" placeholder="ابحث عن منتج...">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="cart-wrapper">
+                        <a asp-action="Checkout" asp-controller="Product">
+                            <button  class="cart-btn">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="containers">
+            <div class="footer-column">
+                <h3>التواصل:</h3>
+                <p>البريد الإلكتروني: Hfrehat105@gmail.com</p>
+                <p>رقم الهاتف: 0776294775</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>روابط سريعة:</h3>
+                <ul>
+                    <li><a href="/home.html">الصفحة الرئيسية</a></li>
+                    <li><a href="/products.html">منتجاتنا</a></li>
+                    <li><a href="/blog.html">المدونة</a></li>
+                    <li><a href="/aboutUS.html">من نحن</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>خدمات العملاء:</h3>
+                <ul>
+                    <li><a href="/ContactUs.html">تواصل معنا</a></li>
+                    <li><a href="#">تتبع الطلب</a></li>
+                    <li><a href="/farm-consulting.html">الاستشارات الزراعية</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column payment-methods">
+                <h3>طرق الدفع الآمنة:</h3>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_vvQPAm4g2KbrrNElfmYxAr-FP3Kv_AHR98KX5SLm6jdbwDtUUDfSNrBZ_DStW_0PIuU&usqp=CAU"
+                     alt="Visa">
+                <img src="https://www.investopedia.com/thmb/F8CKM3YkF1fmnRCU2g4knuK0eDY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MClogo-c823e495c5cf455c89ddfb0e17fc7978.jpg"
+                     alt="MasterCard">
+                <img src="https://forexawy.com/wp-content/uploads/2024/06/PayPal-Logo.jpg.webp" alt="PayPal">
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#"><img src="/IMG/download (1).png" alt="LinkedIn"></a>
+                <a href="#"><img src="/IMG/download (3).png" alt="X"></a>
+                <a href="#"><img src="/IMG/download (2).png" alt="WhatsApp"></a>
+            </div>
+            <p>© 2024 قطرة نقاء. جميع الحقوق محفوظة. <a href="/ContactUs.html">تواصل معنا</a></p>
+        </div>
+    </footer>
+    <script src="~/js/home3.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,93 @@
+﻿@model List<Master__p.Models.Orderss>
+@{
+    ViewData["Title"] = "HistoryData";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/style/HistoryData.css" />
+}
+
+<h1>HistoryData</h1>
+
+<section class="history-hero">
+    <div class="hero-content" data-aos="fade-up">
+        <h1>سجل مشترياتك</h1>
+        <p>تابع مشترياتك السابقة وتفاصيل طلباتك</p>
+    </div>
+</section>
+
+<section class="purchase-history">
+    <div class="section-header" data-aos="fade-up">
+        <h2>المشتريات السابقة</h2>
+        <p>عرض تفاصيل جميع مشترياتك</p>
+    </div>
+
+    <div class="history-filters" data-aos="fade-up">
+        <div class="filter-group">
+            <label>تصفية حسب:</label>
+            <select id="filterStatus">
+                <option value="all">جميع الطلبات</option>
+                <option value="completed">مكتملة</option>
+                <option value="processing">قيد المعالجة</option>
+                <option value="cancelled">ملغية</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>ترتيب حسب:</label>
+            <select id="sortBy">
+                <option value="newest">الأحدث</option>
+                <option value="oldest">الأقدم</option>
+                <option value="price-high">السعر: من الأعلى</option>
+                <option value="price-low">السعر: من الأقل</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="purchase-list">
+        @foreach (var purchase in Model)
+        {
+            <div class="purchase-card" data-aos="fade-up">
+                <div class="purchase-header">
+                    <div class="order-info">
+                        <span class="order-number">#@purchase.OrderDate</span>
+                        <span class="order-date">@purchase.OrderDate.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("ar-JO"))</span>
+                    </div>
+                    @* <div class="order-status @purchase.Status">@( *@
+                    @*     purchase.Status == "completed" ? "مكتمل" : *@
+                    @*     purchase.Status == "processing" ? "قيد المعالجة" : *@
+                    @*     purchase.Status == "cancelled" ? "ملغى" : "غير معروف" *@
+                    @* )</div> *@
+                </div>
+                <div class="purchase-items">
+                    @foreach (var item in purchase.OrderItems)
+                    {
+                        <div class="purchase-item">
+                            <img src="@item.Product" alt="@item.Quantity">
+                            <div class="item-details">
+                                <h3>@item.Price</h3>
+                                <p>الكمية: @item.Quantity</p>
+                                <p class="price">@item.Price دينار</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="purchase-footer">
+                    <div class="total-amount">
+                        <span>المجموع:</span>
+                        <span class="price">@purchase.TotalAmount دينار</span>
+                    </div>
+                    <div class="purchase-actions">
+                        <button class="btn-details">تفاصيل الطلب</button>
+                        <button class="btn-reorder">إعادة الطلب</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="pagination" data-aos="fade-up">
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn next">التالي <i class="fas fa-chevron-left"></i></button>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+﻿@model Userss
+
+@{
+    ViewData["Title"] = "تعديل الملف الشخصي";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/StyleSheetEditProfile.css" />
+}
+
+<div class="edit-profile-container">
+    <div class="container">
+        <div class="edit-profile-card shadow-sm">
+            <h2 class="edit-profile-title">تعديل الملف الشخصي</h2>
+
+            <form asp-action="EditProfile" method="post">
+                <div class="form-group">
+                    <label class="form-label">الاسم الكامل</label>
+                    <input asp-for="Username" class="form-control" placeholder="أدخل اسمك الكامل" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">رقم الهاتف</label>
+                    <input asp-for="Phone" class="form-control" placeholder="أدخل رقم هاتفك" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">العنوان</label>
+                    <input asp-for="Address" class="form-control" placeholder="أدخل عنوانك" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-submit">
+                        <i class="fas fa-save"></i> حفظ التغييرات
+                    </button>
+                    <a asp-action="Profile" class="btn btn-cancel">
+                        <i class="fas fa-times"></i> إلغاء
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

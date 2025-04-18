@@ -1,0 +1,156 @@
+﻿
+@{
+    ViewData["Title"] = "AgriculturalConsulting";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/style/AgriculturalConsulting.css" />
+}
+
+<h1>AgriculturalConsulting</h1>
+
+<main>
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>استشارات زراعية متخصصة</h1>
+            <p>نقدم خبرتنا لتطوير مزرعتك وزيادة إنتاجيتها</p>
+            <a href="#services" class="cta-button">استشر خبراءنا الآن</a>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <div class="section-header">
+            <h2>خدماتنا الاستشارية</h2>
+            <p>نقدم مجموعة متكاملة من الخدمات الاستشارية لتطوير مزرعتك</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card" onclick="requestService('soil-analysis')">
+                <div class="service-icon">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <h3>تحليل التربة</h3>
+                <p>دراسة شاملة لخصائص التربة وتحديد احتياجاتها من المغذيات</p>
+                <button class="service-btn">طلب الخدمة</button>
+            </div>
+
+            <div class="service-card" onclick="requestService('tree-care')">
+                <div class="service-icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <h3>رعاية الأشجار</h3>
+                <p>برامج متخصصة للعناية بأشجار الزيتون وتحسين إنتاجيتها</p>
+                <button class="service-btn">طلب الخدمة</button>
+            </div>
+
+            <div class="service-card" onclick="requestService('pest-control')">
+                <div class="service-icon">
+                    <i class="fas fa-bug"></i>
+                </div>
+                <h3>مكافحة الآفات</h3>
+                <p>حلول طبيعية وآمنة لمكافحة الآفات وحماية المحاصيل</p>
+                <button class="service-btn">طلب الخدمة</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-certificate"></i>
+                <h3>خبراء معتمدون</h3>
+                <p>فريق من المهندسين الزراعيين المعتمدين</p>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-clock"></i>
+                <h3>دعم مستمر</h3>
+                <p>متابعة دورية ودعم فني على مدار الساعة</p>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-leaf"></i>
+                <h3>حلول طبيعية</h3>
+                <p>نستخدم تقنيات صديقة للبيئة</p>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-chart-line"></i>
+                <h3>نتائج مضمونة</h3>
+                <p>نضمن تحسين إنتاجية مزرعتك</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="offers-section">
+        <div class="section-header">
+            <h2>عروضنا المميزة</h2>
+            <p>استفد من خصوماتنا الحصرية على الخدمات الاستشارية</p>
+        </div>
+
+        <div class="offers-grid">
+            <div class="offer-card">
+                <div class="offer-badge">خصم 15%</div>
+                <h3>الباقة الأساسية</h3>
+                <ul>
+                    <li>تحليل تربة شامل</li>
+                    <li>خطة تسميد متكاملة</li>
+                    <li>زيارة ميدانية واحدة</li>
+                    <li>تقرير فني مفصل</li>
+                </ul>
+                <div class="offer-price">
+                    <span class="price">199</span>
+                    <span class="currency">د.أ</span>
+                </div>
+                <button class="offer-btn" onclick="requestService('basic')">اطلب الآن</button>
+            </div>
+
+            <div class="offer-card featured">
+                <div class="offer-badge">الأكثر طلباً</div>
+                <h3>الباقة المتقدمة</h3>
+                <ul>
+                    <li>جميع مميزات الباقة الأساسية</li>
+                    <li>3 زيارات ميدانية</li>
+                    <li>خطة ري ذكية</li>
+                    <li>دعم فني لمدة 6 أشهر</li>
+                </ul>
+                <div class="offer-price">
+                    <span class="price">399</span>
+                    <span class="currency">د.أ</span>
+                </div>
+                <button class="offer-btn" onclick="requestService('premium')">اطلب الآن</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-form-container">
+            <h2>احصل على استشارة مجانية</h2>
+            <form id="consultationForm" class="consultation-form">
+                <div class="form-group">
+                    <label for="farmerName">الاسم</label>
+                    <input type="text" id="farmerName" name="farmerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="farmSize">مساحة المزرعة (دونم)</label>
+                    <input type="number" id="farmSize" name="farmSize" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">تفاصيل الاستشارة</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    إرسال الطلب
+                </button>
+            </form>
+        </div>
+    </section>
+</main>

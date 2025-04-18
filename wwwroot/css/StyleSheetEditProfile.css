@@ -1,0 +1,144 @@
+﻿/* أنماط عامة */
+.edit-profile-container {
+    font-family: 'Tajawal', sans-serif;
+    background: linear-gradient(135deg, #f8f9fa, #e9f5e9);
+    min-height: 100vh;
+    padding: 3rem 0;
+    direction: rtl;
+}
+
+.edit-profile-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #e0e7dc;
+}
+
+.edit-profile-title {
+    color: #355E3B;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    font-size: 1.8rem;
+}
+
+    .edit-profile-title::after {
+        content: "";
+        position: absolute;
+        bottom: -12px;
+        right: 50%;
+        transform: translateX(50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, #355E3B, #5a8c64);
+        border-radius: 2px;
+    }
+
+/* حقول الإدخال */
+.form-group {
+    margin-bottom: 1.8rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #355E3B;
+    margin-bottom: 0.8rem;
+    display: block;
+    font-size: 1rem;
+}
+
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px 15px;
+    transition: all 0.3s;
+    width: 100%;
+    font-size: 1rem;
+    background-color: #f8faf6;
+}
+
+    .form-control:focus {
+        border-color: #5a8c64;
+        box-shadow: 0 0 0 0.2rem rgba(53, 94, 59, 0.15);
+        background-color: white;
+    }
+
+    .form-control::placeholder {
+        color: #aaa;
+        font-size: 0.9rem;
+    }
+
+/* رسائل التحقق */
+.text-danger {
+    font-size: 0.85rem;
+    color: #dc3545;
+    display: block;
+    margin-top: 8px;
+}
+
+/* أزرار */
+.form-footer {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-top: 2.5rem;
+}
+
+.btn {
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.btn-submit {
+    background-color: #355E3B;
+    color: white;
+}
+
+    .btn-submit:hover {
+        background-color: #2a4b30;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+.btn-cancel {
+    background-color: #f0f4ec;
+    color: #355E3B;
+}
+
+    .btn-cancel:hover {
+        background-color: #e0e7dc;
+        transform: translateY(-2px);
+    }
+
+.btn i {
+    margin-left: 8px;
+    font-size: 1.1rem;
+}
+
+/* التجاوبية */
+@media (max-width: 768px) {
+    .edit-profile-card {
+        padding: 1.8rem;
+    }
+
+    .form-footer {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+    }
+}

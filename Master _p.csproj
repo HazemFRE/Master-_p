@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Master__p</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\.vscode\AboutUs.js.json" />
+    <Content Include="wwwroot\.vscode\blog.js.json" />
+    <Content Include="wwwroot\.vscode\ContactUs.js.json" />
+    <Content Include="wwwroot\.vscode\homepage1.js.json" />
+    <Content Include="wwwroot\.vscode\Homepage2.js.json" />
+    <Content Include="wwwroot\.vscode\Homepage3.js.json" />
+    <Content Include="wwwroot\.vscode\Homepage4.js.json" />
+    <Content Include="wwwroot\.vscode\Login.js.json" />
+    <Content Include="wwwroot\.vscode\registration.js.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+  </ItemGroup>
+
+</Project>

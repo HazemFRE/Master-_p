@@ -1,0 +1,74 @@
+﻿@model List<Master__p.Models.CartItem>
+
+@{
+    ViewData["Title"] = "الدفع";
+    var total = Model.Sum(item => item.Product.Price * item.Quantity);
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/style/checkout.css" />
+}
+
+<main class="page payment-page">
+    <section class="payment-form">
+        <div class="container">
+            <div class="row">
+
+                <!-- ✅ ملخص السلة -->
+                <div class="col-md-6">
+                    <h3 class="text-success mb-4">محتوى السلة</h3>
+                    @foreach (var item in Model)
+                    {
+                        <div class="card mb-3 p-2">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h5>@item.Product.Name</h5>
+                                    <p>الكمية: @item.Quantity</p>
+                                </div>
+                                <div>
+                                    <strong>@(item.Product.Price * item.Quantity) د.أ</strong>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="mt-3 border-top pt-3 text-right">
+                        <h5>المجموع: <strong class="text-danger">@total د.أ</strong></h5>
+                    </div>
+                </div>
+
+                <!-- ✅ نموذج الدفع -->
+                <div class="col-md-6">
+                    <h3 class="text-primary mb-4">معلومات الدفع</h3>
+
+                    <form asp-action="PlaceOrder" method="post">
+                        <div class="form-group">
+                            <label for="method">اختر طريقة الدفع</label>
+                            <select name="method" class="form-control" required>
+                                <option value="بطاقة">بطاقة ائتمان</option>
+                                <option value="أورنج موني">أورنج موني</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-block mt-4">
+                            تنفيذ الطلب والدفع
+                        </button>
+                    </form>
+
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success mt-3">
+                            @TempData["Success"]
+                        </div>
+                    }
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger mt-3">
+                            @TempData["Error"]
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

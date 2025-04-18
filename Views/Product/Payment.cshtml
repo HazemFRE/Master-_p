@@ -1,0 +1,81 @@
+﻿@section Styles {
+
+    <link rel="stylesheet" href="~/style/payment.css" />
+
+}
+<main class="page payment-page">
+    <section class="payment-form">
+     
+      <div class="container"> <div class="col-md-12">
+
+        <div class="row"> 
+                <div class="col-md-4 col-sm-12"> 
+         <div class="siteinfo">
+        <h3>المبلغ المستحق الدفع</h3>
+        <div class="price">0.00<span>دينار أردني </span></div>
+        <h3> اسم المستلم</h3>
+        <div class="name">الاسم </div>
+        <h3>الوقت المتبقي.</h3>
+        <div class="timer"><span id="timer" > 0.00 </span></div>
+        <img class="show-for-large" src="http://www.rayan.co/uploads/Payment/img/logo-dark.png">
+        <p> رقم المستلم : <span>+9627755442</span></p>
+        <p> رقم الطلب: <span>155884400</span></p>
+        <p>عنوان موقع الويب : <span>www.safir118.ir</span></p>
+        <div class="show-for-large bankslogo">
+        </div>
+        </div>
+      </div>
+        <div class="col-md-8 col-sm-12">  
+        <form>
+          <div class="card-details">
+            <h3 class="title">معلومات بطاقتك.</h3>
+            <div class="row">
+
+                <div class="form-group col-sm-12">
+                <label for="card-number">رقم البطاقة</label>
+                <input id="card-number" type="text" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX" aria-label="Card Holder" aria-describedby="basic-addon1">
+              </div>
+              <div class="form-group col-sm-7">
+                <label for="">تاريخ الانتهاء</label>
+                <div class="input-group expiration-date">
+                  <input type="text" class="form-control" placeholder="اليوم" aria-label="MM" aria-describedby="basic-addon1">
+                  <span class="date-separator">/</span>
+                  <input type="text" class="form-control" placeholder="الشهر" aria-label="YY" aria-describedby="basic-addon1">
+                <span class="date-separator">/</span>
+                  <input type="text" class="form-control" placeholder=" السنة" aria-label="YY" aria-describedby="basic-addon1">
+                </div>
+              </div>
+            <div class="form-group col-sm-5">
+                <label for="cvv">رمز التحقق</label>
+                <input id="cvv" type="password" class="form-control" placeholder="CVV2" aria-label="Card Holder" aria-describedby="basic-addon1">
+              </div>
+                <div class="form-group col-sm-7">
+                <label for="cvc"> رمز التحقق الثاني</label>
+                <input id="cvc" type="password" class="form-control" placeholder="أدخل الرمز الثاني للبطاقة" aria-label="Pass Holder" aria-describedby="basic-addon1">
+              </div>
+                 <div class="form-group col-sm-5">
+                <label for="phone">رقم الهاتف المحمول </label>
+                <input id="phone" type="number" class="form-control" placeholder=" أدخل رقم هاتفك المحمول" aria-label="Phone Holder" aria-describedby="basic-addon1">
+              </div>
+            <div class="form-group col-sm-7">
+                <label for="captcha">رمز الأمان</label>
+                <input id="captcha" type="text" class="form-control" placeholder=" أدخل الرمز المقابل" aria-label="captcha Holder" aria-describedby="basic-addon1">
+              </div>
+            <div class="form-group col-sm-5">
+                <label for="captcha">الكود</label>
+                <div class="captcha">AAbbSsK55</div>
+              </div>
+
+              <div class="form-group col-sm-12">
+                <button type="button" class="btn btn-primary btn-block" >الدفع</button>
+              </div>
+            </div>
+          </div>
+        </form>
+          </div>
+
+      </div>
+      </div>
+      </div>
+    </section>
+  </main>
