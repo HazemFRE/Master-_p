@@ -4,17 +4,83 @@
     <link href="~/style/blog.css" rel="stylesheet" />
 }
 
-<div class="container">
-    <h1 class="blog-title">مدونة قطرة نقاء</h1>
+<main >
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>مدونة قطرة نقاء</h1>
+            <p>اكتشف معنا عالم زيت الزيتون وفوائده الصحية</p>
+        </div>
+    </section>
 
-    @foreach (var post in Model)
-    {
-        <div class="blog-card">
-            <img src="@post.Image" alt="@post.Title" class="blog-image" />
-            <div class="blog-content">
-                <h2>@post.Title</h2>
-                <p>@post.Body</p>
+    <!-- Featured Post (أول مقال كمقال مميز) -->
+    <section class="featured-posts">
+        <div class="container">
+            <h2 class="section-title">المقالات المميزة</h2>
+            <div class="featured-grid">
+                @foreach (var post in Model.Take(1))
+                {
+                    <article class="featured-card">
+                        <div class="card-image">
+                            <img src="@post.Image" alt="@post.Title" />
+                            <div class="card-category">مميز</div> <!-- فئة وهمية -->
+                        </div>
+                        <div class="card-content">
+                            <h3>@post.Title</h3>
+                            <p>
+                                @(post.Body?.Length > 150 ? post.Body.Substring(0, 150) + "..." : post.Body)
+                            </p>
+
+
+                            <a   >
+                                اقرأ المزيد <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </article>
+                }
             </div>
         </div>
-    }
-</div>
+    </section>
+
+    <section class="blog-posts">
+        <div class="container">
+            <div class="posts-grid">
+
+                <!-- المقالة الأولى -->
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="https://www.thaqafnafsak.com/wp-content/uploads/2022/03/%D8%B5%D8%A7%D8%A8%D9%88%D9%86-%D8%B2%D9%8A%D8%AA-%D8%A7%D9%84%D8%B2%D9%8A%D8%AA%D9%88%D9%86.jpeg" alt="صابون زيت الزيتون" />
+                        <div class="card-category">مدونة</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>صابون زيت الزيتون</h3>
+                        <p>صابون طبيعي غني بالفيتامينات لترطيب وتنظيف البشرة بعمق...</p>
+                        <a asp-controller="Blog" asp-action="OliveSoap">
+                            اقرأ المزيد <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- المقالة الثانية -->
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="https://static.webteb.net/images/content/tbl_articles_article_23441_37097a7b4a6-b80e-4b5a-bc11-d91aa139a51b.jpg" alt="زيت الزيتون بنكهة الثوم" />
+                        <div class="card-category">مدونة</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>زيت الزيتون بنكهة الثوم</h3>
+                        <p>نكهة مميزة ومذاق أصيل مع فوائد صحية للجهاز المناعي والقلب...</p>
+                        <a asp-controller="Blog" asp-action="GfOliveOil">
+                            اقرأ المزيد <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- المقالة الثالثة -->
+               
+
+            </div>
+        </div>
+    </section>
+
+</main>

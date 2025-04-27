@@ -58,10 +58,27 @@ namespace Master__p.Controllers
             return View(contact);
         }
         [HttpGet]
+        [HttpGet]
         public IActionResult AgriculturalConsulting()
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AgriculturalConsulting(Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(contact);
+                await _context.SaveChangesAsync();
+                ViewBag.Message = "تم إرسال الاستشارة بنجاح!";
+                return View();
+            }
+
+            return View(contact);
+        }
+
 
 
 

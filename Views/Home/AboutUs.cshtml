@@ -2,113 +2,199 @@
 	<link href="~/style/AboutUs.css" rel="stylesheet" />
 }
 
-
-<main>
-    <!-- قسم الترحيب -->
-    <section class="welcome-section">
-        <div class="welcome-overlay"></div>
-        <div class="welcome-content">
-            <h1>مرحباً بكم في قطرة نقاء</h1>
-            <p>نفخر بتقديم أجود أنواع زيت الزيتون البكر الممتاز من مزارعنا مباشرة إلى مائدتكم</p>
+<!-- قسم الهيرو -->
+<section class="hero-section">
+    <div class="hero-background"></div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">زيت زيتون</span>
+                <span class="title-line accent">بكر ممتاز</span>
+                <span class="title-line">من عجلون الأردن</span>
+            </h1>
+            <p class="hero-subtitle">نقاء الطبيعة في كل قطرة زيت من زيت ارض الاردن الحبيبة الى نقاء قلوبكم  </p>
+            <div class="hero-actions">
+                <a asp-action="Allproduct" asp-controller="Product" class="btn btn-primary">
+                    تصفح المنتجات <i class="fas fa-arrow-left ml-2"></i>
+                </a>
+                <a href="#about" class="btn btn-outline">
+                    اكتشف قصتنا <i class="fas fa-book-open ml-2"></i>
+                </a>
+            </div>
         </div>
-    </section>
+    </div>
+    <div class="hero-scroll-indicator">
+        <span></span>
+    </div>
+</section>
 
-    <!-- قسم من نحن -->
-    <section class="about-section">
-        <div class="container">
+
+<!-- قسم من نحن -->
+<section class="about-section" id="about">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">إرث عائلي</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">أصالة تمتد عبر الأجيال في كفرنجة</p>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="https://albaladnews.net/assets/2014-10-23/images/bb44cf2b1f022673edff0687f5c9f373.jpg" alt="مزارع زيتون في كفرنجة">
+                <div class="experience-badge">
+                  
+                    <p> خبرة في الزيتون ومنتجاته </p>
+                </div>
+            </div>
             <div class="about-content">
-                <div class="about-image">
-                    <img src="https://www.al-ayyam.ps/public/files/image/thumb/20171110084259.jpg" alt="مزارع الزيتون">
-                </div>
-                <div class="about-text">
-                    <h2>قصتنا</h2>
-                    <p style="color: black;">
-                        انطلقت رحلتنا بشغف لإنتاج أجود المنتجات الطبيعية المستخلصة من شجرة
-                        الزيتون، مستوحاة من بساتين الأردن الغنية. لا نقتصر على زيت الزيتون فقط، بل نقدم مجموعة واسعة
-                        من المنتجات التي تعكس فوائد هذه الشجرة المباركة، مع ضمان أعلى معايير الجودة في كل خطوة، من
-                        العناية بالأشجار حتى وصول المنتج إليك.
-                    </p>
-                    <p>
-                        نستخدم أحدث التقنيات في عصر الزيتون مع الحفاظ على الطرق التقليدية التي تضمن أعلى جودة للمنتج
-                        النهائي.
-                    </p>
+                <p class="highlight-text">
+                    نعتني بأشجار الزيتون في عجلون كأبنائنا، نقدم لكم زيتاً يروي قصة الأرض والعرق من قلب كفرنجة.
+                </p>
+                <div class="about-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>زراعة عضوية</h3>
+                            <p>أشجارنا في كفرنجة تروى بماء المطر وتعتنى بها أيادٍ خبيرة</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-hands"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>قطف يدوي</h3>
+                            <p>قطف في وقت النضج الأمثل بحرفية مزارعي عجلون</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-temperature-low"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>عصر على البارد</h3>
+                            <p>حفظ القيمة الغذائية بعصر بارد في معاصر كفرنجة</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- قسم مميزاتنا -->
-    <section class="features-section">
-        <div class="container">
-            <h2>ما يميزنا</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-leaf"></i>
-                    <h3>منتجات عضوية</h3>
-                    <p>نضمن لكم منتجات عضوية 100% خالية من المواد الكيميائية</p>
+<!-- قسم الجودة -->
+<section class="quality-section">
+    <div class="quality-overlay"></div>
+    <div class="container">
+        <div class="section-header light">
+            <h2 class="section-title">معايير جودتنا</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">جودة تشعر بها في كل قطرة من زيت عجلون</p>
+        </div>
+
+        <div class="quality-steps">
+            <div class="step">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>حموضة أقل من 0.8%</h3>
+                    <p>مستوى حموضة منخفض يضمن زيتاً بكراً ممتازاً من عجلون</p>
                 </div>
-                <div class="feature-card">
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>نسبة بيروكسايد منخفضة</h3>
+                    <p>ضمان نضارة الزيت وخلوه من التزنخ</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>غني بمضادات الأكسدة</h3>
+                    <p>محتوى عالي من البوليفينولات المفيدة للصحة</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- قسم الشهادات -->
+<section class="certificates-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">شهاداتنا</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle" style="    color: #fff;">ضمان لجودة منتجاتنا من عجلون</p>
+        </div>
+
+        <div class="certificates-grid">
+            <div class="certificate-card">
+                <div class="certificate-icon">
                     <i class="fas fa-award"></i>
-                    <h3>جودة عالية</h3>
-                    <p>حاصلون على شهادات جودة عالمية في إنتاج زيت الزيتون</p>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-truck"></i>
-                    <h3>توصيل سريع</h3>
-                    <p>نوفر خدمة توصيل سريعة لجميع مناطق المملكة</p>
+                <h3>ISO 9001</h3>
+                <p>نظام إدارة الجودة</p>
+                <div class="certificate-overlay">شهادة دولية</div>
+            </div>
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i class="fas fa-certificate"></i>
                 </div>
+                <h3>EC 834/2007</h3>
+                <p>عضوي معتمد</p>
+                <div class="certificate-overlay">معتمد أوروبياً</div>
+            </div>
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>HACCP</h3>
+                <p>سلامة الغذاء</p>
+                <div class="certificate-overlay">معايير عالمية</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- قسم عملية الإنتاج -->
-    <section class="process-section">
-        <div class="container">
-            <h2>عملية الإنتاج</h2>
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3>زراعة عضوية</h3>
-                    <p>نعتني بأشجار الزيتون باستخدام أساليب الزراعة العضوية</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3>قطف يدوي</h3>
-                    <p>نقطف الزيتون يدوياً في الوقت المثالي لضمان أفضل جودة</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon">
-                        <i class="fas fa-oil-can"></i>
-                    </div>
-                    <h3>عصر على البارد</h3>
-                    <p>نستخدم تقنية العصر على البارد للحفاظ على العناصر الغذائية</p>
-                </div>
-            </div>
+<!-- قسم الاتصال -->
+<section class="contact-section">
+    <div class="contact-content">
+        <div class="section-header">
+            <h2 class="section-title">تواصل معنا</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle" style="    color: #fff;">زورونا في كفرنجة - عجلون</p>
         </div>
-    </section>
 
-    <!-- قسم الشهادات -->
-    <section class="certificates-section">
-        <div class="container">
-            <h2>شهاداتنا</h2>
-            <div class="certificates-grid">
-                <div class="certificate">
-                    <img src="/IMG/cert-1.png" alt="شهادة الجودة">
-                    <h3>شهادة الجودة العالمية</h3>
+        <div class="contact-methods">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
                 </div>
-                <div class="certificate">
-                    <img src="/IMG/cert-2.png" alt="شهادة المنتجات العضوية">
-                    <h3>شهادة المنتجات العضوية</h3>
+                <h3>هاتف</h3>
+                <a href="tel:+962790000000">0776294775</a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
                 </div>
-                <div class="certificate">
-                    <img src="/IMG/cert-3.png" alt="شهادة سلامة الغذاء">
-                    <h3>شهادة سلامة الغذاء</h3>
+                <h3>بريد إلكتروني</h3>
+                <a href="mailto:info@qatratnqaa.com">hfrehat105@gmail.com</a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp"></i>
                 </div>
+                <h3>واتساب</h3>
+                <a href="https://wa.me/962790000000">ارسل رسالة</a>
             </div>
         </div>
-    </section>
-</main>
+    </div>
+    <div class="contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26980.937895454947!2d35.741599855798285!3d32.29526736487513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151c8e6d9e69b279%3A0xceeda631ce948947!2z2YTZiNin2KEg2YPZgdix2YbYrNip2Iwg2KfZhNij2LHYr9mG!5e0!3m2!1sar!2sus!4v1745447140166!5m2!1sar!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"> </iframe>
+              
+        </iframe>
+    </div>
+</section>

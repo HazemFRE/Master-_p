@@ -1,0 +1,461 @@
+﻿@{
+    Layout = "AdminLayout";
+}
+
+@section Styles {
+    <link href="~/style/AdminOrders.css" rel="stylesheet" /> }
+
+
+
+
+ <!-- Main Content -->
+<main class="admin-main">
+    <!-- Top Header -->
+    <header class="admin-header">
+        <div class="header-search">
+            <input type="text" placeholder="بحث عن طلب...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="header-actions">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="badge">3</span>
+            </div>
+            <div class="admin-profile">
+                <img src="images/avatars/admin.jpg" alt="صورة المشرف">
+                <div class="profile-info">
+                    <span class="admin-name">المشرف</span>
+                    <span class="admin-role">مدير النظام</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Orders Content -->
+    <div class="admin-content">
+        <div class="content-header">
+            <h2>إدارة الطلبات</h2>
+            <div class="header-actions">
+                <button class="secondary-btn">
+                    <i class="fas fa-file-export"></i> تصدير
+                </button>
+                <button class="secondary-btn">
+                    <i class="fas fa-file-import"></i> استيراد
+                </button>
+            </div>
+        </div>
+
+        <!-- Filters and Categories -->
+        <div class="filters-section">
+            <div class="filter-group">
+                <label>الحالة:</label>
+                <select id="status-filter">
+                    <option value="">الكل</option>
+                    <option value="pending">قيد الانتظار</option>
+                    <option value="processing">قيد المعالجة</option>
+                    <option value="shipped">تم الشحن</option>
+                    <option value="delivered">تم التسليم</option>
+                    <option value="cancelled">ملغي</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>طريقة الدفع:</label>
+                <select id="payment-filter">
+                    <option value="">الكل</option>
+                    <option value="credit-card">بطاقة ائتمان</option>
+                    <option value="bank-transfer">تحويل بنكي</option>
+                    <option value="cash-on-delivery">الدفع عند الاستلام</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>التاريخ:</label>
+                <select id="date-filter">
+                    <option value="">الكل</option>
+                    <option value="today">اليوم</option>
+                    <option value="yesterday">أمس</option>
+                    <option value="this-week">هذا الأسبوع</option>
+                    <option value="this-month">هذا الشهر</option>
+                    <option value="custom">تخصيص</option>
+                </select>
+            </div>
+            <div class="filter-group date-range" style="display: none;">
+                <label>من:</label>
+                <input type="date" id="date-from">
+                <label>إلى:</label>
+                <input type="date" id="date-to">
+            </div>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="table-responsive">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" id="select-all">
+                        </th>
+                        <th>رقم الطلب</th>
+                        <th>العميل</th>
+                        <th>التاريخ</th>
+                        <th>المبلغ</th>
+                        <th>طريقة الدفع</th>
+                        <th>الحالة</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="order-checkbox">
+                        </td>
+                        <td>#ORD-2023-001</td>
+                        <td>أحمد محمد</td>
+                        <td>15/05/2023</td>
+                        <td>350 ريال</td>
+                        <td>بطاقة ائتمان</td>
+                        <td><span class="status delivered">تم التسليم</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn view" title="عرض"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn edit" title="تعديل">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn print" title="طباعة">
+                                    <i class="fas fa-print"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="order-checkbox">
+                        </td>
+                        <td>#ORD-2023-002</td>
+                        <td>سارة أحمد</td>
+                        <td>16/05/2023</td>
+                        <td>180 ريال</td>
+                        <td>تحويل بنكي</td>
+                        <td><span class="status processing">قيد المعالجة</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn view" title="عرض"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn edit" title="تعديل">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn print" title="طباعة">
+                                    <i class="fas fa-print"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="order-checkbox">
+                        </td>
+                        <td>#ORD-2023-003</td>
+                        <td>محمد علي</td>
+                        <td>17/05/2023</td>
+                        <td>240 ريال</td>
+                        <td>الدفع عند الاستلام</td>
+                        <td><span class="status pending">قيد الانتظار</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn view" title="عرض"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn edit" title="تعديل">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn print" title="طباعة">
+                                    <i class="fas fa-print"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="order-checkbox">
+                        </td>
+                        <td>#ORD-2023-004</td>
+                        <td>فاطمة حسن</td>
+                        <td>18/05/2023</td>
+                        <td>120 ريال</td>
+                        <td>بطاقة ائتمان</td>
+                        <td><span class="status shipped">تم الشحن</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn view" title="عرض"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn edit" title="تعديل">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn print" title="طباعة">
+                                    <i class="fas fa-print"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="order-checkbox">
+                        </td>
+                        <td>#ORD-2023-005</td>
+                        <td>عبدالله خالد</td>
+                        <td>19/05/2023</td>
+                        <td>450 ريال</td>
+                        <td>تحويل بنكي</td>
+                        <td><span class="status cancelled">ملغي</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn view" title="عرض"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn edit" title="تعديل">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn print" title="طباعة">
+                                    <i class="fas fa-print"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+     
+          
+        </div>
+    </div>
+</main>
+    </div>
+
+<!-- View Order Modal -->
+<div id="order-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modal-title">تفاصيل الطلب #ORD-2023-001</h3>
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="order-details">
+                <div class="order-info">
+                    <div class="info-group">
+                        <h4>معلومات الطلب</h4>
+                        <div class="info-row">
+                            <span class="info-label">رقم الطلب:</span>
+                            <span class="info-value">#ORD-2023-001</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">تاريخ الطلب:</span>
+                            <span class="info-value">15/05/2023</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">حالة الطلب:</span>
+                            <span class="info-value status delivered">تم التسليم</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">طريقة الدفع:</span>
+                            <span class="info-value">بطاقة ائتمان</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">المبلغ الإجمالي:</span>
+                            <span class="info-value">350 ريال</span>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <h4>معلومات العميل</h4>
+                        <div class="info-row">
+                            <span class="info-label">الاسم:</span>
+                            <span class="info-value">أحمد محمد</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">البريد الإلكتروني:</span>
+                            <span class="info-value">ahmed@example.com</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">رقم الهاتف:</span>
+                            <span class="info-value">0501234567</span>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <h4>عنوان التسليم</h4>
+                        <div class="info-row">
+                            <span class="info-label">العنوان:</span>
+                            <span class="info-value">شارع الملك فهد، الرياض، المملكة العربية السعودية</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-items">
+                    <h4>المنتجات</h4>
+                    <table class="order-items-table">
+                        <thead>
+                            <tr>
+                                <th>المنتج</th>
+                                <th>السعر</th>
+                                <th>الكمية</th>
+                                <th>الإجمالي</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="product-info">
+                                        <img src="images/products/olive-oil.jpg" alt="زيت زيتون"
+                                             class="product-thumbnail">
+                                        <span>زيت زيتون بكر ممتاز</span>
+                                    </div>
+                                </td>
+                                <td>180 ريال</td>
+                                <td>1</td>
+                                <td>180 ريال</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="product-info">
+                                        <img src="images/products/olive-honey.jpg" alt="عسل بالزيتون"
+                                             class="product-thumbnail">
+                                        <span>عسل بالزيتون</span>
+                                    </div>
+                                </td>
+                                <td>180 ريال</td>
+                                <td>1</td>
+                                <td>180 ريال</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-left">المجموع الفرعي:</td>
+                                <td>360 ريال</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-left">الشحن:</td>
+                                <td>0 ريال</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-left">الضريبة:</td>
+                                <td>0 ريال</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td colspan="3" class="text-left">الإجمالي:</td>
+                                <td>350 ريال</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="order-timeline">
+                    <h4>سجل الطلب</h4>
+                    <div class="timeline">
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h5>تم إنشاء الطلب</h5>
+                                <p>15/05/2023 - 10:30 صباحاً</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h5>تم الدفع</h5>
+                                <p>15/05/2023 - 10:35 صباحاً</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h5>قيد المعالجة</h5>
+                                <p>15/05/2023 - 11:00 صباحاً</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h5>تم الشحن</h5>
+                                <p>16/05/2023 - 09:00 صباحاً</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h5>تم التسليم</h5>
+                                <p>17/05/2023 - 02:00 مساءً</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="secondary-btn" id="print-order">
+                <i class="fas fa-print"></i> طباعة
+            </button>
+            <button class="primary-btn" id="update-status">تحديث الحالة</button>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Order Modal -->
+<div id="edit-order-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="edit-modal-title">تعديل الطلب #ORD-2023-001</h3>
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <form id="edit-order-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="order-status">حالة الطلب</label>
+                        <select id="order-status" name="status" required>
+                            <option value="pending">قيد الانتظار</option>
+                            <option value="processing">قيد المعالجة</option>
+                            <option value="shipped">تم الشحن</option>
+                            <option value="delivered">تم التسليم</option>
+                            <option value="cancelled">ملغي</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment-status">حالة الدفع</label>
+                        <select id="payment-status" name="payment_status" required>
+                            <option value="pending">قيد الانتظار</option>
+                            <option value="paid">تم الدفع</option>
+                            <option value="failed">فشل الدفع</option>
+                            <option value="refunded">تم الاسترداد</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="shipping-method">طريقة الشحن</label>
+                        <select id="shipping-method" name="shipping_method" required>
+                            <option value="standard">قياسي</option>
+                            <option value="express">سريع</option>
+                            <option value="pickup">استلام من المتجر</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tracking-number">رقم التتبع</label>
+                        <input type="text" id="tracking-number" name="tracking_number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="customer-notes">ملاحظات للعميل</label>
+                    <textarea id="customer-notes" name="customer_notes" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="admin-notes">ملاحظات داخلية</label>
+                    <textarea id="admin-notes" name="admin_notes" rows="3"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="secondary-btn" id="cancel-edit">إلغاء</button>
+            <button class="primary-btn" id="save-edit">حفظ التغييرات</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿@model Master__p.Models.Postss
+@{
+    ViewData["Title"] = "صابون زيت الزيتون";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link href="~/style/OliveSoap.css" rel="stylesheet" />
+}
+
+<body>
+    <div class="product-page">
+        <div class="product-container">
+            <div class="product-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrISkA99N83F4ifKW0Rqkg5-Sht_3R_2zBBw&s" alt="صورة المنتج">
+            </div>
+            <div class="product-info">
+                <div class="product-header">
+                    <h1 class="product-title">صابون زيت الزيتون</h1>
+                    <p class="product-subtitle">مصنوع يدوياً للحصول على أفضل عناية بالبشرة</p>
+                </div>
+
+                <p class="product-description">
+                    صابون زيت الزيتون هو أكثر من مجرد منتج تنظيف، بل هو هدية من الطبيعة لبشرتك. يتميّز بتركيبته الغنية بمضادات الأكسدة والفيتامينات مثل فيتامين E، مما يساعد على ترطيب البشرة بعمق وتهدئة التهيجات.
+                    يُعد مثاليًا للبشرة الحساسة والجافة، إذ ينظّف بلطف دون أن يجرّد الجلد من زيوته الطبيعية. كما يساعد في تقليل ظهور التجاعيد بفضل خصائصه المضادة للشيخوخة، ويمنح البشرة ملمسًا ناعمًا ومظهرًا صحيًا.
+                </p>
+                <p class="product-description">
+                    يتميز هذا المنتج بجودة عالية وتصميم أنيق يجمع بين العملية والجمال، حيث تم تصنيعه باستخدام أجود الخامات لضمان المتانة وطول العمر. سواء كنت تبحث عن منتج للاستخدام اليومي أو لهدية مميزة، فإن هذا الخيار المثالي يلبي جميع احتياجاتك.
+                </p>
+                <p class="product-description">
+                    يُعد هذا المنتج خياراً ذكياً لأولئك الذين يهتمون بالتفاصيل ويرغبون بالحصول على قيمة حقيقية مقابل المال. بفضل مزاياه المتعددة وسهولة استخدامه، يُضفي لمسة من التميز على أسلوب حياتك اليومية، ويمنحك تجربة استخدام فريدة ترضي توقعاتك.
+                </p>
+
+
+                <div class="features-list">
+                    <div class="feature-item">
+                        <i class="feature-icon">✓</i>
+                        <span>ميزة مميزة أولى للمنتج</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon">✓</i>
+                        <span>ميزة ثانية رائعة للمنتج</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon">✓</i>
+                        <span>ميزة إضافية تجعل المنتج فريداً</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon">✓</i>
+                        <span>ضمان لمدة سنتين على المنتج</span>
+                    </div>
+                </div>
+
+                
+                    <div class="rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="rating-count">(124 تقييم)</span>
+                    </div>
+
+                <a asp-action="Index" asp-controller="Home" class="offer-btn">
+                    العودة للصفحة الرئيسية
+                </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+

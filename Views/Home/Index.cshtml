@@ -1,154 +1,113 @@
 ﻿@model List<Master__p.Models.Product>
 
+<!-- Hero Section -->
+<section class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="/videos/IMG_5457 (1).MP4" style="z-index: -100;" type="video/mp4">
+    </video>
 
+    <div class="hero-overlay"></div>
 
-<body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <video autoplay muted loop playsinline class="hero-video">
-            <source src="/videos/IMG_5457 (1).MP4" style="z-index: -100;" type="video/mp4">
-        </video>
-
-        <div class="hero-overlay"></div>
-
-        <div class="hero-content">
-            <h1>اكتشف نقاء الطبيعة مع قطرة نقاء</h1>
-            <p>نوفر لكم أجود منتجات الزيتون الطبيعية من قلب الطبيعة إلى منزلكم</p>
-            <div class="hero-buttons">
-                <a href="/Product/Allproduct" class="cta-button primary">تسوق الآن</a>
-                <a href="/Home/AgriculturalConsulting" class="cta-button secondary">استشارة زراعية</a>
-            </div>
+    <div class="hero-content">
+        <h1>اكتشف نقاء الطبيعة مع قطرة نقاء</h1>
+        <p>نوفر لكم أجود منتجات الزيتون الطبيعية من قلب الطبيعة إلى منزلكم</p>
+        <div class="hero-buttons">
+            <a href="/Product/Allproduct" class="cta-button primary">تسوق الآن</a>
+            <a href="/Home/AgriculturalConsulting" class="cta-button secondary">استشارة زراعية</a>
         </div>
-    </section>
+    </div>
+</section>
 
+<!-- Featured Products -->
+<section id="products" class="products">
+    <div class="section-header">
+        <h2>منتجاتنا المميزة</h2>
+        <p>اكتشف مجموعتنا المختارة من أفضل منتجات الزيتون</p>
+    </div>
 
-    <!-- Featured Products -->
-    <section id="products" class="products">
-        <div class="section-header">
-            <h2>منتجاتنا المميزة</h2>
-            <p>اكتشف مجموعتنا المختارة من أفضل منتجات الزيتون</p>
-        </div>
-
-        <div class="product-grid">
-            @foreach (var item in Model)
-            {
-                <div class="product-card">
-                    <div class="product-badge">الأكثر مبيعاً</div>
-                    <img src="@item.Image" alt="@item.Name" />
-                    <h3>@item.Name</h3>
-                    <p>@item.Description</p>
-                    <div class="product-price">
-                        <span>@item.Price</span>
-                        <span class="currency">د.أ</span>
-                    </div>
-                    <form method="get" asp-controller="Product" asp-action="Details">
-                        <input type="hidden" name="id" value="@item.Id" />
-                        <button type="submit" class="details-btn">اعرف المزيد</button>
-                    </form>
+    <div class="product-grid">
+        @foreach (var item in Model.Take(6))
+        {
+            <div class="product-card">
+                @if (!string.IsNullOrEmpty(item.Name))
+                {
+                    <div class="product-badge">@item.Name</div>
+                }
+                <img src="@item.Image" alt="@item.Name" />
+                <h3>@item.Name</h3>
+                <p>@item.Description</p>
+                <div class="product-price">
+                    <span>@item.Price</span>
+                    <span class="currency">د.أ</span>
                 </div>
-            }
-        </div>
-    </section>
-
-
-        @*     <div class="product-card"> *@
-        @*         <div class="product-badge">جديد</div> *@
-        @*         <img src="/IMG/3.png" alt="صابون زيت الزيتون"> *@
-        @*         <h3>صابون زيت الزيتون الطبيعي</h3> *@
-        @*         <p>مصنوع يدوياً للحصول على أفضل عناية بالبشرة</p> *@
-        @*         <div class="product-price"> *@
-        @*             <span>15.00</span> *@
-        @*             <span class="currency">د.أ</span> *@
-        @*         </div> *@
-        @*         <button class="product-btn" onclick="window.location.href='/homepage2.html'">اعرف المزيد</button> *@
-        @*     </div> *@
-
-        @*     <div class="product-card"> *@
-        @*         <img src="/IMG/4.png" alt="زيت الزيتون بالنكهات"> *@
-        @*         <h3>زيت الزيتون بالنكهات</h3> *@
-        @*         <p>زيت زيتون طبيعي غني بنكهات مميزة</p> *@
-        @*         <div class="product-price"> *@
-        @*             <span>30.00</span> *@
-        @*             <span class="currency">د.أ</span> *@
-        @*         </div> *@
-        @*         <button class="product-btn" onclick="window.location.href='/home3.html'">اعرف المزيد</button> *@
-        @*     </div> *@
-
-        @*     <div class="product-card"> *@
-        @*         <div class="product-badge">حصري</div> *@
-        @*         <img src="https://themillnatural.com/img/the-mill-olive-jam-concept.jpg" alt="مربى الزيتون"> *@
-        @*         <h3>مربى الزيتون</h3> *@
-        @*         <p>منتج فريد ونادر، يصنع من الزيتون مع نكهة حلوة</p> *@
-        @*         <div class="product-price"> *@
-        @*             <span>20.00</span> *@
-        @*             <span class="currency">د.أ</span> *@
-        @*         </div> *@
-        @*         <button class="product-btn" onclick="window.location.href='/homepage4.html'">اعرف المزيد</button> *@
-        @*     </div> *@
-
-        @*     <div class="product-card"> *@
-        @*         <div class="product-badge">جديد</div> *@
-        @*         <img src="https://static.webteb.net/images/content/tbl_articles_article_33304_67ea9de780-967a-4850-b3d3-dd76381bdc1e.jpg" alt="شاي أوراق الزيتون"> *@
-        @*         <h3>شاي أوراق الزيتون</h3> *@
-        @*         <p>مشروب صحي غني بمضادات الأكسدة</p> *@
-        @*         <div class="product-price"> *@
-        @*             <span>12.00</span> *@
-        @*             <span class="currency">د.أ</span> *@
-        @*         </div> *@
-        @*         <a class="product-btn" href='olive-leaf-tea.html'>اعرف المزيد</a> *@
-        @*     </div> *@
-
-        @*     <div class="product-card"> *@
-        @*         <div class="product-badge">محدود</div> *@
-        @*         <img src="https://media.elaard.com/img/21/12/08/16389858962692009.jpg" alt="عسل بالزيتون"> *@
-        @*         <h3>عسل بالزيتون</h3> *@
-        @*         <p>مزيج فريد من العسل الطبيعي وزيت الزيتون</p> *@
-        @*         <div class="product-price"> *@
-        @*             <span>35.00</span> *@
-        @*             <span class="currency">د.أ</span> *@
-        @*         </div> *@
-        @*         <a class="product-btn" href='olive-honey.html'>اعرف المزيد</a> *@
-        @*     </div> *@
-        @* </div> *@
-       <div style="text-align:center">
-        <button class="product-btn" onclick="window.location.href='/Product/Allproduct'">عرض المزيد من المنتجات </button>
-        </div>
-       </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="feature-item">
-            <i class="fas fa-leaf"></i>
-            <h3>منتجات طبيعية 100%</h3>
-            <p>نضمن لكم منتجات خالية من المواد الكيميائية</p>
-        </div>
-        <div class="feature-item">
-            <i class="fas fa-award"></i>
-            <h3>جودة لا تُضاهى</h3>
-            <p>منتجاتنا حاصلة على شهادات جودة عالمية</p>
-        </div>
-        <div class="feature-item">
-            <i class="fas fa-handshake"></i>
-            <h3>التزام بالاستدامة</h3>
-            <p>ندعم المزارعين المحليين ونحافظ على البيئة</p>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>قصتنا</h2>
-                <p>
-                    نحن في قطرة نقاء نؤمن بأن الجودة تبدأ من المزرعة. نعمل مع المزارعين المحليين لضمان أفضل المنتجات
-                    الطبيعية.
-                </p>
-                <a href="/Home/AboutUs" class="learn-more">اعرف المزيد عنا</a>
+                <form method="get" asp-controller="Product" asp-action="Details">
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <button type="submit" class="product-btn">اعرف المزيد</button>
+                </form>
             </div>
-            <div class="about-image">
-                <img src="https://albosala.com/wp-content/uploads/2019/12/%D8%AA%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D9%86%D8%AA%D8%A7%D8%AC-%D8%A7%D9%84%D8%B2%D9%8A%D8%AA%D9%88%D9%86-%D9%81%D9%8A-%D8%B9%D8%AC%D9%84%D9%88%D9%86-1024x645.jpg" alt="مزرعة الزيتون">
-            </div>
+        }
+    </div>
+   <style>
+    .more-products-btn {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .btn-view-more {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-view-more:hover {
+        background-color: #218838;
+    }
+</style>
+
+<div class="more-products-btn">
+    <a asp-controller="Product" asp-action="Allproduct" class="btn-view-more">
+        عرض المزيد من المنتجات
+    </a>
+</div>
+
+
+</section>
+
+
+<!-- Features Section -->
+<section class="features">
+    <div class="feature-item">
+        <i class="fas fa-leaf"></i>
+        <h3>منتجات طبيعية 100%</h3>
+        <p>نضمن لكم منتجات خالية من المواد الكيميائية</p>
+    </div>
+    <div class="feature-item">
+        <i class="fas fa-award"></i>
+        <h3>جودة لا تُضاهى</h3>
+        <p>منتجاتنا حاصلة على شهادات جودة عالمية</p>
+    </div>
+    <div class="feature-item">
+        <i class="fas fa-handshake"></i>
+        <h3>التزام بالاستدامة</h3>
+        <p>ندعم المزارعين المحليين ونحافظ على البيئة</p>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about">
+    <div class="about-content">
+        <div class="about-text">
+            <h2>قصتنا</h2>
+            <p>نحن في قطرة نقاء نؤمن بأن الجودة تبدأ من المزرعة. نعمل مع المزارعين المحليين لضمان أفضل المنتجات الطبيعية.</p>
+            <a asp-controller="Home" asp-action="AboutUs" class="learn-more">اعرف المزيد عنا</a>
         </div>
-    </section>
-</body>
+        <div class="about-image">
+            <img src="https://alqudsnews.net/thumb/800x450/uploads//images/8cf074802cb4253ceacda06be2072938.jpg?v=1.1" alt="مزرعة الزيتون">
+        </div>
+    </div>
+</section>

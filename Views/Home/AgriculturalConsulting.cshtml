@@ -5,152 +5,127 @@
 @section Styles {
     <link rel="stylesheet" href="~/style/AgriculturalConsulting.css" />
 }
-
-<h1>AgriculturalConsulting</h1>
-
-<main>
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1>استشارات زراعية متخصصة</h1>
-            <p>نقدم خبرتنا لتطوير مزرعتك وزيادة إنتاجيتها</p>
-            <a href="#services" class="cta-button">استشر خبراءنا الآن</a>
+<!-- قسم البطل -->
+<section class="hero-section" style="background-image: url('/IMG/egypt-olives.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="container" style="background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 10px;">
+        <div class="hero-content" style="color: #fff; text-align: center;">
+            <h1 class="hero-title">استشارات زراعية احترافية</h1>
+            <p class="hero-subtitle">خبرة علمية في تحسين إنتاجية المزارع وزيادة جودة المحاصيل</p>
+            <!-- زر إجراءات واضح -->
+            <a href="#services" class="cta-button" style="background-color: #28a745; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+                <i class="fas fa-arrow-left ml-2"></i> اكتشف خدماتنا
+            </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="services" class="services-section">
+<!-- قسم الخدمات -->
+<section id="services" class="services-section">
+    <div class="container">
+        <!-- رأس القسم -->
         <div class="section-header">
-            <h2>خدماتنا الاستشارية</h2>
-            <p>نقدم مجموعة متكاملة من الخدمات الاستشارية لتطوير مزرعتك</p>
+            <h2 class="section-title">خدماتنا المتخصصة</h2>
+            <p class="section-subtitle">حلول مصممة خصيصاً لاحتياجات مزرعتك</p>
         </div>
 
+        <!-- شبكة الخدمات -->
         <div class="services-grid">
-            <div class="service-card" onclick="requestService('soil-analysis')">
-                <div class="service-icon">
-                    <i class="fas fa-flask"></i>
+            <!-- بطاقة الخدمة الأولى -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://www.mshtly.com/uploads/posts/%D8%A7%D9%84%D8%AA%D8%B1%D8%A8%D8%A9-%D8%A7%D9%84%D8%B2%D8%B1%D8%A7%D8%B9%D9%8A%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D9%85%D9%85%D9%84%D9%83%D8%A9-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9.webp" alt="تحليل التربة">
                 </div>
-                <h3>تحليل التربة</h3>
-                <p>دراسة شاملة لخصائص التربة وتحديد احتياجاتها من المغذيات</p>
-                <button class="service-btn">طلب الخدمة</button>
-            </div>
-
-            <div class="service-card" onclick="requestService('tree-care')">
-                <div class="service-icon">
-                    <i class="fas fa-tree"></i>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>تحليل التربة</h3>
+                    <p>تشخيص دقيق لخصائص التربة وتحديد احتياجاتها من العناصر الغذائية</p>
+                    <!-- زر طلب الخدمة -->
+                    <button class="service-btn" onclick="requestService('soil-analysis')">
+                        <i class="fas fa-shopping-cart ml-2"></i> طلب الخدمة
+                    </button>
                 </div>
-                <h3>رعاية الأشجار</h3>
-                <p>برامج متخصصة للعناية بأشجار الزيتون وتحسين إنتاجيتها</p>
-                <button class="service-btn">طلب الخدمة</button>
             </div>
-
-            <div class="service-card" onclick="requestService('pest-control')">
-                <div class="service-icon">
-                    <i class="fas fa-bug"></i>
-                </div>
-                <h3>مكافحة الآفات</h3>
-                <p>حلول طبيعية وآمنة لمكافحة الآفات وحماية المحاصيل</p>
-                <button class="service-btn">طلب الخدمة</button>
-            </div>
+            <!-- يتم تكرار بطاقات أخرى بنفس الأسلوب مع التعديلات المطلوبة -->
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="features-section">
+<!-- قسم الميزات -->
+<section class="features-section">
+    <div class="container">
         <div class="features-grid">
             <div class="feature-item">
-                <i class="fas fa-certificate"></i>
+                <div class="feature-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
                 <h3>خبراء معتمدون</h3>
-                <p>فريق من المهندسين الزراعيين المعتمدين</p>
+                <p>فريق من المهندسين الزراعيين ذوي الخبرة الطويلة</p>
             </div>
-
-            <div class="feature-item">
-                <i class="fas fa-clock"></i>
-                <h3>دعم مستمر</h3>
-                <p>متابعة دورية ودعم فني على مدار الساعة</p>
-            </div>
-
-            <div class="feature-item">
-                <i class="fas fa-leaf"></i>
-                <h3>حلول طبيعية</h3>
-                <p>نستخدم تقنيات صديقة للبيئة</p>
-            </div>
-
-            <div class="feature-item">
-                <i class="fas fa-chart-line"></i>
-                <h3>نتائج مضمونة</h3>
-                <p>نضمن تحسين إنتاجية مزرعتك</p>
-            </div>
+            <!-- ميّزات إضافية بنفس الشكل -->
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="offers-section">
+<section class="offers-section">
+    <div class="container">
         <div class="section-header">
-            <h2>عروضنا المميزة</h2>
-            <p>استفد من خصوماتنا الحصرية على الخدمات الاستشارية</p>
+            <h2 class="section-title">جربه مجاناً لأول مرة – عرض حصري</h2>
+            <p class="section-subtitle">ابدأ بخطوة مضمونة معنا واستفيد من خبرتنا!</p>
         </div>
-
         <div class="offers-grid">
             <div class="offer-card">
-                <div class="offer-badge">خصم 15%</div>
-                <h3>الباقة الأساسية</h3>
-                <ul>
-                    <li>تحليل تربة شامل</li>
-                    <li>خطة تسميد متكاملة</li>
-                    <li>زيارة ميدانية واحدة</li>
-                    <li>تقرير فني مفصل</li>
-                </ul>
-                <div class="offer-price">
-                    <span class="price">199</span>
-                    <span class="currency">د.أ</span>
+                <div class="offer-header">
+                    <h3>الباقة الأساسية</h3>
+                    <div class="offer-price">0 د.أ – العرض الأول لك!</div>
                 </div>
-                <button class="offer-btn" onclick="requestService('basic')">اطلب الآن</button>
-            </div>
-
-            <div class="offer-card featured">
-                <div class="offer-badge">الأكثر طلباً</div>
-                <h3>الباقة المتقدمة</h3>
-                <ul>
-                    <li>جميع مميزات الباقة الأساسية</li>
-                    <li>3 زيارات ميدانية</li>
-                    <li>خطة ري ذكية</li>
-                    <li>دعم فني لمدة 6 أشهر</li>
-                </ul>
-                <div class="offer-price">
-                    <span class="price">399</span>
-                    <span class="currency">د.أ</span>
+                <div class="offer-features">
+                    <ul>
+                        <li>تحليل تربة شامل لضمان الزراعة المثلى</li>
+                        <li>خطة تسميد متكاملة للحصول على نتائج فعالة</li>
+                        <li>زيارة ميدانية واحدة لتشخيص احتياجات مزرعتك</li>
+                        <li>تقرير فني مفصل مع توصيات عملية</li>
+                        <li>دعم فني لمدة شهر كامل</li>
+                    </ul>
+                   
+                    
                 </div>
-                <button class="offer-btn" onclick="requestService('premium')">اطلب الآن</button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="contact-section">
-        <div class="contact-form-container">
-            <h2>احصل على استشارة مجانية</h2>
-            <form id="consultationForm" class="consultation-form">
-                <div class="form-group">
-                    <label for="farmerName">الاسم</label>
-                    <input type="text" id="farmerName" name="farmerName" required>
-                </div>
+<!-- نموذج الاتصال -->
+<form asp-action="AgriculturalConsulting" method="post" class="bg-white p-5 rounded-4 shadow-sm" style="max-width: 600px; margin: auto;">
+    @Html.AntiForgeryToken()
 
-                <div class="form-group">
-                    <label for="phone">رقم الهاتف</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
+    <h2 class="text-center mb-4 text-success">اطلب استشارة مجانية</h2>
 
-                <div class="form-group">
-                    <label for="farmSize">مساحة المزرعة (دونم)</label>
-                    <input type="number" id="farmSize" name="farmSize" min="1" required>
-                </div>
+    <div class="mb-3">
+        <label for="Name" class="form-label">الاسم الكامل</label>
+        <input type="text" name="Name" id="Name" class="form-control border-success" placeholder="أدخل اسمك الكامل" required>
+    </div>
 
-                <div class="form-group">
-                    <label for="message">تفاصيل الاستشارة</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
-                </div>
+    <div class="mb-3">
+        <label for="Email" class="form-label">البريد الإلكتروني</label>
+        <input type="email" name="Email" id="Email" class="form-control border-success" placeholder="example@example.com" required>
+    </div>
 
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i>
-                    إرسال الطلب
-                </button>
-            </form>
-        </div>
-    </section>
-</main>
+    <div class="mb-3">
+        <label for="Subject" class="form-label">الموضوع</label>
+        <input type="text" name="Subject" id="Subject" class="form-control border-success" placeholder="الموضوع (اختياري)">
+    </div>
+
+    <div class="mb-4">
+        <label for="Message" class="form-label">الرسالة</label>
+        <textarea name="Message" id="Message" rows="4" class="form-control border-success" placeholder="اكتب تفاصيل الاستشارة المطلوبة" required></textarea>
+    </div>
+
+    <div class="d-grid">
+        <button type="submit" class="btn btn-success btn-lg">
+            <i class="fas fa-paper-plane ms-2"></i> إرسال الطلب
+        </button>
+    </div>
+</form>
+

@@ -1,0 +1,1492 @@
+﻿
+
+@section Styles {
+	<link rel="stylesheet" href="~/style/admin-dashboard-customers.css">
+
+    <style>
+        :root {
+            /* Color Palette */
+            --primary-color: #2e7d32; /* Dark green */
+            --primary-light: #4caf50; /* Medium green */
+            --primary-lighter: #81c784; /* Light green */
+            --primary-lightest: #e8f5e9; /* Very light green */
+            --accent-color: #8bc34a; /* Lime green */
+            --text-dark: #263238;
+            --text-medium: #455a64;
+            --text-light: #607d8b;
+            --background-light: #f5f7f8;
+            --white: #ffffff;
+            --gray-light: #eceff1;
+            --gray-medium: #cfd8dc;
+            --success-color: #2e7d32;
+            --warning-color: #ff8f00;
+            --error-color: #c62828;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', 'Tajawal', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: var(--text-dark);
+            direction: rtl;
+        }
+
+        /* Admin Main Layout */
+        .admin-main {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Admin Header Styles */
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-search {
+            position: relative;
+            flex: 1;
+            max-width: 500px;
+        }
+
+            .header-search input {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                padding-left: 3rem;
+                border: 1px solid var(--gray-medium);
+                border-radius: var(--border-radius);
+                font-size: 0.9rem;
+                transition: var(--transition);
+            }
+
+                .header-search input:focus {
+                    border-color: var(--primary-light);
+                    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+                    outline: none;
+                }
+
+            .header-search button {
+                position: absolute;
+                left: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                background: none;
+                border: none;
+                color: var(--text-light);
+                cursor: pointer;
+            }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .notifications {
+            position: relative;
+            cursor: pointer;
+            color: var(--text-medium);
+            font-size: 1.2rem;
+        }
+
+            .notifications .badge {
+                position: absolute;
+                top: -5px;
+                left: -5px;
+                background-color: var(--error-color);
+                color: white;
+                border-radius: 50%;
+                width: 18px;
+                height: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.7rem;
+                font-weight: bold;
+            }
+
+        .admin-profile {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+            .admin-profile img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .admin-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .admin-role {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Admin Content Styles */
+        .admin-content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .content-header {
+            margin-bottom: 2rem;
+        }
+
+            .content-header h1 {
+                font-size: 1.5rem;
+                color: var(--primary-color);
+                margin: 0;
+            }
+
+        /* Filters Section */
+        .filters-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.25rem;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+            .filter-group label {
+                font-size: 0.9rem;
+                color: var(--text-medium);
+                font-weight: 500;
+            }
+
+            .filter-group select {
+                padding: 0.65rem 0.75rem;
+                border: 1px solid var(--gray-medium);
+                border-radius: 6px;
+                font-size: 0.9rem;
+                background-color: var(--white);
+                min-width: 180px;
+                color: var(--text-medium);
+                transition: var(--transition);
+            }
+
+                .filter-group select:focus {
+                    outline: none;
+                    border-color: var(--primary-light);
+                    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+                }
+
+        /* Table Styles */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 1000px;
+        }
+
+            .admin-table th,
+            .admin-table td {
+                padding: 1rem;
+                text-align: right;
+                border-bottom: 1px solid var(--gray-light);
+            }
+
+            .admin-table th {
+                background-color: var(--primary-lightest);
+                color: var(--primary-color);
+                font-weight: 600;
+                position: sticky;
+                top: 0;
+            }
+
+            .admin-table tbody tr:hover {
+                background-color: var(--primary-lightest);
+            }
+
+            .admin-table input[type="checkbox"] {
+                width: 18px;
+                height: 18px;
+                cursor: pointer;
+                accent-color: var(--primary-light);
+            }
+
+        /* Customer Info in Table */
+        .customer-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .customer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Rating Stars */
+        .rating {
+            color: #ffc107;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 2px;
+        }
+
+            .rating .far {
+                color: #e0e0e0;
+            }
+
+        /* Status Badges */
+        .status {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-align: center;
+            min-width: 90px;
+        }
+
+            .status.approved {
+                background-color: rgba(46, 125, 50, 0.1);
+                color: var(--success-color);
+                border: 1px solid rgba(46, 125, 50, 0.3);
+            }
+
+            .status.pending {
+                background-color: rgba(255, 143, 0, 0.1);
+                color: var(--warning-color);
+                border: 1px solid rgba(255, 143, 0, 0.3);
+            }
+
+            .status.rejected {
+                background-color: rgba(198, 40, 40, 0.1);
+                color: var(--error-color);
+                border: 1px solid rgba(198, 40, 40, 0.3);
+            }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            background-color: transparent;
+            color: var(--text-light);
+        }
+
+            .action-btn:hover {
+                transform: scale(1.1);
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+
+            .action-btn.view {
+                color: var(--primary-color);
+            }
+
+                .action-btn.view:hover {
+                    background-color: rgba(46, 125, 50, 0.1);
+                }
+
+            .action-btn.edit {
+                color: var(--warning-color);
+            }
+
+                .action-btn.edit:hover {
+                    background-color: rgba(255, 143, 0, 0.1);
+                }
+
+            .action-btn.delete {
+                color: var(--error-color);
+            }
+
+                .action-btn.delete:hover {
+                    background-color: rgba(198, 40, 40, 0.1);
+                }
+
+        /* Bulk Actions (Commented in HTML) */
+        .bulk-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+            .bulk-actions select {
+                padding: 0.65rem 0.75rem;
+                border: 1px solid var(--gray-medium);
+                border-radius: 6px;
+                font-size: 0.9rem;
+                background-color: var(--white);
+                min-width: 180px;
+            }
+
+        .secondary-btn {
+            background-color: var(--gray-light);
+            color: var(--text-dark);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+            .secondary-btn:hover {
+                background-color: var(--gray-medium);
+            }
+
+        /* Pagination (Commented in HTML) */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .pagination-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--gray-medium);
+            background-color: var(--white);
+            color: var(--text-medium);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+            .pagination-btn:hover {
+                background-color: var(--gray-light);
+            }
+
+            .pagination-btn.active {
+                background-color: var(--primary-color);
+                color: white;
+                border-color: var(--primary-color);
+            }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+            .modal.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-20px);
+            transition: var(--transition);
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .modal-header h2 {
+                margin: 0;
+                font-size: 1.25rem;
+                color: var(--primary-color);
+            }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 0.25rem;
+            transition: var(--transition);
+        }
+
+            .close-modal:hover {
+                color: var(--primary-color);
+                transform: rotate(90deg);
+            }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-footer {
+            padding: 1rem 1.25rem;
+            border-top: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: flex-start;
+            gap: 0.75rem;
+        }
+
+        /* Review Details in Modal */
+        .review-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .customer-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+            .customer-info img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .customer-info h3 {
+                margin: 0;
+                font-size: 1.1rem;
+            }
+
+        .review-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .product-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .product-thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+
+        .product-info h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .review-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .review-text {
+            margin: 0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .review-images {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+            .review-images img {
+                width: 100px;
+                height: 100px;
+                border-radius: 6px;
+                object-fit: cover;
+                cursor: pointer;
+                transition: var(--transition);
+            }
+
+                .review-images img:hover {
+                    transform: scale(1.05);
+                }
+
+        /* Modal Buttons */
+        .primary-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+            .primary-btn:hover {
+                background-color: #1b5e20;
+            }
+
+        .danger-btn {
+            background-color: var(--error-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+            .danger-btn:hover {
+                background-color: #8e1e1e;
+            }
+
+        /* Responsive Design */
+        (max-width: 992px) {
+            .admin-header
+
+        {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .header-search {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .admin-content {
+            padding: 1rem;
+        }
+
+        }
+
+        (max-width: 768px) {
+            .filters-section
+
+        {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .filter-group {
+            width: 100%;
+        }
+
+            .filter-group select {
+                width: 100%;
+            }
+
+        .review-header {
+            flex-direction: column;
+        }
+
+        .modal-footer {
+            flex-wrap: wrap;
+        }
+
+        }
+
+           (max-width: 576px) {
+            .admin-profile .profile-info
+
+        {
+            display: none;
+        }
+
+        .modal-content {
+            width: 95%;
+        }
+
+        .review-images {
+            flex-direction: column;
+        }
+
+            .review-images img {
+                width: 100%;
+                height: auto;
+            }
+
+        }
+
+    </style>
+ 
+}
+@{
+    Layout = "AdminLayout";
+}
+
+
+<body>
+    <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Top Header -->
+            <header class="admin-header">
+                <div class="header-search">
+                    <input type="text" placeholder="بحث عن تقييم...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="admin-profile">
+                        <img src="images/avatars/admin.jpg" alt="صورة المشرف">
+                        <div class="profile-info">
+                            <span class="admin-name">المشرف</span>
+                            <span class="admin-role">مدير النظام</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Reviews Content -->
+            <div class="admin-content">
+                <div class="content-header">
+                    <h1>إدارة التقييمات</h1>
+                </div>
+
+                <!-- Filters Section -->
+                <div class="filters-section">
+                    <div class="filter-group">
+                        <label for="product-filter">المنتج:</label>
+                        <select id="product-filter">
+                            <option value="">الكل</option>
+                            <option value="olive-oil">زيت زيتون بكر ممتاز</option>
+                            <option value="olive-honey">عسل بالزيتون</option>
+                            <option value="olive-leaf-tea">شاي أوراق الزيتون</option>
+                            <option value="olive-soap">صابون زيتون طبيعي</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="rating-filter">التقييم:</label>
+                        <select id="rating-filter">
+                            <option value="">الكل</option>
+                            <option value="5">5 نجوم</option>
+                            <option value="4">4 نجوم</option>
+                            <option value="3">3 نجوم</option>
+                            <option value="2">2 نجوم</option>
+                            <option value="1">1 نجمة</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="date-filter">التاريخ:</label>
+                        <select id="date-filter">
+                            <option value="">الكل</option>
+                            <option value="today">اليوم</option>
+                            <option value="week">آخر أسبوع</option>
+                            <option value="month">آخر شهر</option>
+                            <option value="year">آخر سنة</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="status-filter">الحالة:</label>
+                        <select id="status-filter">
+                            <option value="">الكل</option>
+                            <option value="approved">معتمد</option>
+                            <option value="pending">قيد المراجعة</option>
+                            <option value="rejected">مرفوض</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Reviews Table -->
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="select-all">
+                                </th>
+                                <th>العميل</th>
+                                <th>المنتج</th>
+                                <th>التقييم</th>
+                                <th>المراجعة</th>
+                                <th>التاريخ</th>
+                                <th>الحالة</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="review-select">
+                                </td>
+                                <td>
+                                    <div class="customer-info">
+                                        <img src="images/avatars/user1.jpg" alt="صورة العميل" class="customer-avatar">
+                                        <span>أحمد محمد</span>
+                                    </div>
+                                </td>
+                                <td>زيت زيتون بكر ممتاز</td>
+                                <td>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </td>
+                                <td>منتج ممتاز جداً، جودة عالية وتغليف جميل. أنصح الجميع بشرائه.</td>
+                                <td>2023-05-15</td>
+                                <td><span class="status approved">معتمد</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view" title="عرض"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit" title="تعديل">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete" title="حذف">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="review-select">
+                                </td>
+                                <td>
+                                    <div class="customer-info">
+                                        <img src="images/avatars/user2.jpg" alt="صورة العميل" class="customer-avatar">
+                                        <span>فاطمة أحمد</span>
+                                    </div>
+                                </td>
+                                <td>عسل بالزيتون</td>
+                                <td>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </td>
+                                <td>طعم رائع وفوائد صحية كثيرة. السعر مناسب للجودة.</td>
+                                <td>2023-05-14</td>
+                                <td><span class="status pending">قيد المراجعة</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view" title="عرض"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit" title="تعديل">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete" title="حذف">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="review-select">
+                                </td>
+                                <td>
+                                    <div class="customer-info">
+                                        <img src="images/avatars/user3.jpg" alt="صورة العميل" class="customer-avatar">
+                                        <span>محمد علي</span>
+                                    </div>
+                                </td>
+                                <td>شاي أوراق الزيتون</td>
+                                <td>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </td>
+                                <td>مفيد للصحة ولكن الطعم يحتاج للتعود عليه.</td>
+                                <td>2023-05-13</td>
+                                <td><span class="status rejected">مرفوض</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view" title="عرض"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit" title="تعديل">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete" title="حذف">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="review-select">
+                                </td>
+                                <td>
+                                    <div class="customer-info">
+                                        <img src="images/avatars/user4.jpg" alt="صورة العميل" class="customer-avatar">
+                                        <span>سارة خالد</span>
+                                    </div>
+                                </td>
+                                <td>صابون زيتون طبيعي</td>
+                                <td>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </td>
+                                <td>صابون طبيعي 100%، رغوة جيدة ورائحة مميزة. أنصح به للبشرة الحساسة.</td>
+                                <td>2023-05-12</td>
+                                <td><span class="status approved">معتمد</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view" title="عرض"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit" title="تعديل">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete" title="حذف">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                @* <!-- Bulk Actions --> *@
+                @* <div class="bulk-actions"> *@
+                @*     <select id="bulk-action"> *@
+                @*         <option value="">إجراءات جماعية</option> *@
+                @*         <option value="approve">اعتماد المحدد</option> *@
+                @*         <option value="reject">رفض المحدد</option> *@
+                @*         <option value="delete">حذف المحدد</option> *@
+                @*     </select> *@
+                @*     <button class="secondary-btn" id="apply-bulk-action">تطبيق</button> *@
+                @* </div> *@
+
+                @* <!-- Pagination --> *@
+                @* <div class="pagination"> *@
+                @*     <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button> *@
+                @*     <button class="pagination-btn active">1</button> *@
+                @*     <button class="pagination-btn">2</button> *@
+                @*     <button class="pagination-btn">3</button> *@
+                @*     <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button> *@
+                @* </div> *@
+            </div>
+        </main>
+    </div>
+
+    <!-- View Review Modal -->
+    <div class="modal" id="review-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تفاصيل التقييم</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="review-details">
+                    <div class="review-header">
+                        <div class="customer-info">
+                            <img src="images/avatars/user1.jpg" alt="صورة العميل" class="customer-avatar">
+                            <div>
+                                <h3>أحمد محمد</h3>
+                                <span class="review-date">15 مايو 2023</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <img src="images/products/olive-oil.jpg" alt="زيت زيتون" class="product-thumbnail">
+                            <h3>زيت زيتون بكر ممتاز</h3>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">منتج ممتاز جداً، جودة عالية وتغليف جميل. أنصح الجميع بشرائه.</p>
+                        <div class="review-images">
+                            <img src="images/reviews/review1-1.jpg" alt="صورة التقييم">
+                            <img src="images/reviews/review1-2.jpg" alt="صورة التقييم">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn close-modal">إغلاق</button>
+                <button class="primary-btn" id="approve-review">اعتماد</button>
+                <button class="danger-btn" id="reject-review">رفض</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin-dashboard.js"></script>
+    <script src="js/admin-reviews.js"></script>
+
+</body>
+
+@section Scripts {
+	<script >
+        // تهيئة الأحداث
+        function initializeEvents() {
+            // زر تسجيل الخروج
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', handleLogout);
+            }
+
+            // زر إضافة تقييم جديد
+            document.getElementById('add-review').addEventListener('click', () => {
+                showModal('edit-review-modal');
+                document.getElementById('edit-modal-title').textContent = 'إضافة تقييم جديد';
+                document.getElementById('edit-review-form').reset();
+            });
+
+            // أزرار الإجراءات
+            const actionButtons = document.querySelectorAll('.action-btn');
+            actionButtons.forEach(button => {
+                button.addEventListener('click', handleActionButton);
+            });
+
+            // البحث
+            const searchInput = document.querySelector('.header-search input');
+            if (searchInput) {
+                searchInput.addEventListener('input', handleSearch);
+            }
+
+            // الفلاتر
+            const filters = document.querySelectorAll('.filter-group select');
+            filters.forEach(filter => {
+                filter.addEventListener('change', handleFilter);
+            });
+
+            // تحديد الكل
+            const selectAllCheckbox = document.getElementById('select-all');
+            if (selectAllCheckbox) {
+                selectAllCheckbox.addEventListener('change', handleSelectAll);
+            }
+
+            // الإجراءات الجماعية
+            const bulkActionBtn = document.getElementById('apply-bulk-action');
+            if (bulkActionBtn) {
+                bulkActionBtn.addEventListener('click', handleBulkAction);
+            }
+
+            // أزرار إغلاق النوافذ المنبثقة
+            const modalCloseButtons = document.querySelectorAll('.close-modal');
+            modalCloseButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    hideAllModals();
+                });
+            });
+
+            // حفظ التقييم
+            document.getElementById('save-review').addEventListener('click', saveReview);
+
+            // أزرار اعتماد/رفض التقييم
+            const approveReviewBtn = document.getElementById('approve-review');
+            const rejectReviewBtn = document.getElementById('reject-review');
+            if (approveReviewBtn) {
+                approveReviewBtn.addEventListener('click', () => handleReviewStatus('approved'));
+            }
+            if (rejectReviewBtn) {
+                rejectReviewBtn.addEventListener('click', () => handleReviewStatus('rejected'));
+            }
+        }
+
+
+        // معالجة أزرار الإجراءات
+        function handleActionButton(e) {
+            const button = e.currentTarget;
+            const action = button.classList.contains('view') ? 'view' :
+                button.classList.contains('edit') ? 'edit' :
+                    button.classList.contains('delete') ? 'delete' : null;
+
+            if (!action) return;
+
+            const row = button.closest('tr');
+            const reviewId = row.dataset.id;
+
+            switch (action) {
+                case 'view':
+                    showReviewDetails(reviewId);
+                    break;
+                case 'edit':
+                    editReview(reviewId);
+                    break;
+                case 'delete':
+                    deleteReview(reviewId);
+                    break;
+            }
+        }
+
+        // عرض تفاصيل التقييم
+        function showReviewDetails(reviewId) {
+            const modal = document.getElementById('review-modal');
+            if (modal) {
+                // هنا يمكنك إضافة كود لجلب بيانات التقييم من الخادم
+                modal.style.display = 'block';
+            }
+        }
+
+        // تعديل التقييم
+        function editReview(reviewId) {
+            // هنا يمكنك إضافة كود لتعديل التقييم
+            console.log('تعديل التقييم:', reviewId);
+        }
+
+        // حذف التقييم
+        function deleteReview(reviewId) {
+            if (confirm('هل أنت متأكد من حذف هذا التقييم؟')) {
+                // هنا يمكنك إضافة كود لحذف التقييم من الخادم
+                console.log('حذف التقييم:', reviewId);
+            }
+        }
+
+        // معالجة البحث
+        function handleSearch(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('.admin-table tbody tr');
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        }
+
+        // معالجة الفلاتر
+        function handleFilter() {
+            const productFilter = document.getElementById('product-filter').value;
+            const ratingFilter = document.getElementById('rating-filter').value;
+            const dateFilter = document.getElementById('date-filter').value;
+            const statusFilter = document.getElementById('status-filter').value;
+
+            const rows = document.querySelectorAll('.admin-table tbody tr');
+
+            rows.forEach(row => {
+                const product = row.querySelector('td:nth-child(3)').textContent;
+                const rating = row.querySelector('.rating').children.length;
+                const date = row.querySelector('td:nth-child(6)').textContent;
+                const status = row.querySelector('.status').classList[1];
+
+                const matchesProduct = !productFilter || product === productFilter;
+                const matchesRating = !ratingFilter || rating === parseInt(ratingFilter);
+                const matchesDate = !dateFilter || isDateInRange(date, dateFilter);
+                const matchesStatus = !statusFilter || status === statusFilter;
+
+                row.style.display = (matchesProduct && matchesRating && matchesDate && matchesStatus) ? '' : 'none';
+            });
+        }
+
+        // التحقق من نطاق التاريخ
+        function isDateInRange(date, range) {
+            const reviewDate = new Date(date);
+            const today = new Date();
+            const diffTime = Math.abs(today - reviewDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            switch (range) {
+                case 'today':
+                    return diffDays === 0;
+                case 'week':
+                    return diffDays <= 7;
+                case 'month':
+                    return diffDays <= 30;
+                case 'year':
+                    return diffDays <= 365;
+                default:
+                    return true;
+            }
+        }
+
+        // معالجة تحديد الكل
+        function handleSelectAll(e) {
+            const checkboxes = document.querySelectorAll('.review-select');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = e.target.checked;
+            });
+        }
+
+        // معالجة الإجراءات الجماعية
+        function handleBulkAction() {
+            const action = document.getElementById('bulk-action').value;
+            if (!action) {
+                alert('الرجاء اختيار إجراء');
+                return;
+            }
+
+            const selectedReviews = Array.from(document.querySelectorAll('.review-select:checked'))
+                .map(checkbox => checkbox.closest('tr').dataset.id);
+
+            if (selectedReviews.length === 0) {
+                alert('الرجاء اختيار تقييم واحد على الأقل');
+                return;
+            }
+
+            switch (action) {
+                case 'approve':
+                    if (confirm('هل أنت متأكد من اعتماد التقييمات المحددة؟')) {
+                        // هنا يمكنك إضافة كود لاعتماد التقييمات
+                        console.log('اعتماد التقييمات:', selectedReviews);
+                    }
+                    break;
+                case 'reject':
+                    if (confirm('هل أنت متأكد من رفض التقييمات المحددة؟')) {
+                        // هنا يمكنك إضافة كود لرفض التقييمات
+                        console.log('رفض التقييمات:', selectedReviews);
+                    }
+                    break;
+                case 'delete':
+                    if (confirm('هل أنت متأكد من حذف التقييمات المحددة؟')) {
+                        // هنا يمكنك إضافة كود لحذف التقييمات
+                        console.log('حذف التقييمات:', selectedReviews);
+                    }
+                    break;
+            }
+        }
+
+        // معالجة حالة التقييم
+        function handleReviewStatus(status) {
+            const modal = document.getElementById('review-modal');
+            const reviewId = modal.dataset.reviewId;
+
+            if (confirm(`هل أنت متأكد من ${status === 'approved' ? 'اعتماد' : 'رفض'} هذا التقييم؟`)) {
+                // هنا يمكنك إضافة كود لتحديث حالة التقييم
+                console.log(`تحديث حالة التقييم ${reviewId} إلى ${status}`);
+                modal.style.display = 'none';
+            }
+        }
+
+        // حفظ التقييم
+        function saveReview() {
+            const form = document.getElementById('edit-review-form');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const formData = {
+                customer: document.getElementById('review-customer-input').value,
+                product: document.getElementById('review-product-input').value,
+                rating: document.querySelector('input[name="rating"]:checked').value,
+                comment: document.getElementById('review-comment-input').value,
+                status: document.getElementById('review-status-input').value
+            };
+
+            // هنا يمكن إضافة طلب API لحفظ التقييم
+            console.log('Saving review:', formData);
+            hideAllModals();
+            // تحديث الجدول
+        }
+
+        // إظهار النافذة المنبثقة
+        function showModal(modalId) {
+            hideAllModals();
+            document.getElementById(modalId).classList.add('show');
+        }
+
+        // إخفاء جميع النوافذ المنبثقة
+        function hideAllModals() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('show');
+            });
+        }
+
+
+
+        // تهيئة الأحداث
+        function initializeEvents() {
+            // تحديد الكل في جدول التقييمات
+            const selectAllCheckbox = document.getElementById('select-all');
+            if (selectAllCheckbox) {
+                selectAllCheckbox.addEventListener('change', handleSelectAll);
+            }
+
+            // أزرار الإجراءات في جدول التقييمات
+            const actionButtons = document.querySelectorAll('.action-btn');
+            actionButtons.forEach(button => {
+                button.addEventListener('click', handleActionButton);
+            });
+
+            // البحث في جدول التقييمات
+            const searchInput = document.querySelector('.header-search input');
+            if (searchInput) {
+                searchInput.addEventListener('input', handleSearch);
+            }
+
+            // الفلاتر
+            const ratingFilter = document.getElementById('rating-filter');
+            const statusFilter = document.getElementById('status-filter');
+            const sortFilter = document.getElementById('sort-filter');
+
+            if (ratingFilter) {
+                ratingFilter.addEventListener('change', applyFilters);
+            }
+            if (statusFilter) {
+                statusFilter.addEventListener('change', applyFilters);
+            }
+            if (sortFilter) {
+                sortFilter.addEventListener('change', applyFilters);
+            }
+
+            // إجراءات جماعية
+            const bulkActionSelect = document.getElementById('bulk-action');
+            const applyBulkActionBtn = document.getElementById('apply-bulk-action');
+
+            if (bulkActionSelect && applyBulkActionBtn) {
+                applyBulkActionBtn.addEventListener('click', handleBulkAction);
+            }
+        }
+
+        // معالجة تحديد الكل
+        function handleSelectAll(e) {
+            const checkboxes = document.querySelectorAll('.review-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = e.target.checked;
+            });
+        }
+
+        // معالجة أزرار الإجراءات
+        function handleActionButton(e) {
+            const button = e.currentTarget;
+            const action = button.classList.contains('view') ? 'عرض' :
+                button.classList.contains('edit') ? 'تعديل' :
+                    button.classList.contains('delete') ? 'حذف' : '';
+
+            const row = button.closest('tr');
+            const reviewId = row.getAttribute('data-review-id');
+
+            switch (action) {
+                case 'عرض':
+                    viewReview(reviewId);
+                    break;
+                case 'تعديل':
+                    editReview(reviewId);
+                    break;
+                case 'حذف':
+                    deleteReview(reviewId);
+                    break;
+            }
+        }
+
+        // عرض تفاصيل التقييم
+        function viewReview(reviewId) {
+            // هنا يمكن إضافة كود لعرض تفاصيل التقييم في نافذة منبثقة
+            alert(`عرض تفاصيل التقييم: ${reviewId}`);
+        }
+
+        // تعديل التقييم
+        function editReview(reviewId) {
+            // هنا يمكن إضافة كود لتعديل التقييم
+            alert(`تعديل التقييم: ${reviewId}`);
+        }
+
+        // حذف التقييم
+        function deleteReview(reviewId) {
+            if (confirm(`هل أنت متأكد من حذف التقييم "${reviewId}"؟`)) {
+                // هنا يمكن إضافة كود لحذف التقييم من الخادم
+                alert(`تم حذف التقييم: ${reviewId}`);
+
+                // تحديث جدول التقييمات
+                // في التطبيق الحقيقي، سيتم تحديث البيانات من الخادم
+                location.reload();
+            }
+        }
+
+        // معالجة البحث
+        function handleSearch(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const tableRows = document.querySelectorAll('.admin-table tbody tr');
+
+            tableRows.forEach(row => {
+                const productName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                const customerName = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                const reviewText = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+
+                if (productName.includes(searchTerm) ||
+                    customerName.includes(searchTerm) ||
+                    reviewText.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // تطبيق الفلاتر
+        function applyFilters() {
+            const ratingFilter = document.getElementById('rating-filter').value;
+            const statusFilter = document.getElementById('status-filter').value;
+            const tableRows = document.querySelectorAll('.admin-table tbody tr');
+
+            tableRows.forEach(row => {
+                const reviewRating = row.querySelector('.rating').getAttribute('data-rating');
+                const reviewStatus = row.querySelector('.status').classList.contains('approved') ? 'approved' :
+                    row.querySelector('.status').classList.contains('pending') ? 'pending' :
+                        row.querySelector('.status').classList.contains('rejected') ? 'rejected' : '';
+
+                const ratingMatch = !ratingFilter || reviewRating === ratingFilter;
+                const statusMatch = !statusFilter || reviewStatus === statusFilter;
+
+                if (ratingMatch && statusMatch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            // تطبيق الترتيب
+            applySorting();
+        }
+
+        // تطبيق الترتيب
+        function applySorting() {
+            const sortFilter = document.getElementById('sort-filter').value;
+            const tableBody = document.querySelector('.admin-table tbody');
+            const tableRows = Array.from(tableBody.querySelectorAll('tr'));
+
+            tableRows.sort((a, b) => {
+                const dateA = new Date(a.querySelector('td:nth-child(5)').textContent);
+                const dateB = new Date(b.querySelector('td:nth-child(5)').textContent);
+                const ratingA = parseInt(a.querySelector('.rating').getAttribute('data-rating'));
+                const ratingB = parseInt(b.querySelector('.rating').getAttribute('data-rating'));
+
+                switch (sortFilter) {
+                    case 'date-new':
+                        return dateB - dateA;
+                    case 'date-old':
+                        return dateA - dateB;
+                    case 'rating-high':
+                        return ratingB - ratingA;
+                    case 'rating-low':
+                        return ratingA - ratingB;
+                    default:
+                        return 0;
+                }
+            });
+
+            // إعادة ترتيب الصفوف في الجدول
+            tableRows.forEach(row => {
+                tableBody.appendChild(row);
+            });
+        }
+
+        // معالجة الإجراءات الجماعية
+        function handleBulkAction() {
+            const bulkAction = document.getElementById('bulk-action').value;
+            const selectedReviews = document.querySelectorAll('.review-checkbox:checked');
+
+            if (!bulkAction) {
+                alert('الرجاء اختيار إجراء');
+                return;
+            }
+
+            if (selectedReviews.length === 0) {
+                alert('الرجاء اختيار تقييم واحد على الأقل');
+                return;
+            }
+
+            switch (bulkAction) {
+                case 'delete':
+                    if (confirm(`هل أنت متأكد من حذف ${selectedReviews.length} تقييم؟`)) {
+                        // هنا يمكن إضافة كود لحذف التقييمات المحددة
+                        alert(`تم حذف ${selectedReviews.length} تقييم`);
+                        location.reload();
+                    }
+                    break;
+                case 'approve':
+                    // هنا يمكن إضافة كود لموافقة التقييمات المحددة
+                    alert(`تمت موافقة ${selectedReviews.length} تقييم`);
+                    location.reload();
+                    break;
+                case 'reject':
+                    // هنا يمكن إضافة كود لرفض التقييمات المحددة
+                    alert(`تم رفض ${selectedReviews.length} تقييم`);
+                    location.reload();
+                    break;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+}

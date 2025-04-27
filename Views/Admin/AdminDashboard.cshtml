@@ -1,0 +1,805 @@
+﻿@{
+    Layout = "AdminLayout";
+}
+
+@section styles {
+    <style>
+        /* Main Content Styles */
+        .main-content {
+            padding: 20px;
+            background-color: #f5f7fa;
+            min-height: 100vh;
+            /* margin-right: 250px; /* Assuming sidebar is 250px */ */
+            transition: all 0.3s;
+        }
+
+        /* Header Styles */
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e6ed;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #toggle-sidebar {
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: #3b3f5c;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .date-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #3b3f5c;
+            font-weight: 500;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .search-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+            .search-box input {
+                padding: 8px 15px 8px 35px;
+                border-radius: 6px;
+                border: 1px solid #e0e6ed;
+                background-color: #fff;
+                width: 200px;
+                transition: all 0.3s;
+            }
+
+                .search-box input:focus {
+                    width: 250px;
+                    outline: none;
+                    border-color: #4361ee;
+                }
+
+            .search-box i {
+                position: absolute;
+                right: 10px;
+                color: #888ea8;
+            }
+
+        .notifications {
+            position: relative;
+            cursor: pointer;
+            color: #3b3f5c;
+            font-size: 18px;
+        }
+
+            .notifications .badge {
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                background-color: #e7515a;
+                color: white;
+                border-radius: 50%;
+                width: 18px;
+                height: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 10px;
+                font-weight: bold;
+            }
+
+        .notifications-dropdown {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            width: 300px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            z-index: 100;
+            display: none;
+        }
+
+        .notifications:hover .notifications-dropdown {
+            display: block;
+        }
+
+        .notification-item {
+            display: flex;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f2f3;
+        }
+
+            .notification-item.unread {
+                background-color: #f9f9f9;
+            }
+
+            .notification-item i {
+                font-size: 18px;
+                color: #4361ee;
+                margin-top: 3px;
+            }
+
+        .notification-content p {
+            margin: 0;
+            font-weight: 600;
+            color: #3b3f5c;
+        }
+
+        .notification-content span {
+            font-size: 12px;
+            color: #888ea8;
+        }
+
+        .admin-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .admin-profile img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .profile-info .name {
+                font-weight: 600;
+                color: #3b3f5c;
+            }
+
+            .profile-info .role {
+                font-size: 12px;
+                color: #888ea8;
+            }
+
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+            .stat-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+            .stat-icon.orders {
+                background-color: #4361ee;
+            }
+
+            .stat-icon.revenue {
+                background-color: #00ab55;
+            }
+
+            .stat-icon.customers {
+                background-color: #e2a03f;
+            }
+
+            .stat-icon.products {
+                background-color: #e7515a;
+            }
+
+        .stat-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            color: #888ea8;
+            font-weight: 600;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: #3b3f5c;
+            margin-bottom: 5px;
+        }
+
+        .stat-change {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+            .stat-change.positive {
+                color: #00ab55;
+            }
+
+            .stat-change.negative {
+                color: #e7515a;
+            }
+
+        /* Recent Orders Section */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .section-header h2 {
+                margin: 0;
+                color: #3b3f5c;
+                font-size: 20px;
+            }
+
+        .view-all {
+            color: #4361ee;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+            .view-all:hover {
+                text-decoration: underline;
+            }
+
+        .recent-orders {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .admin-table thead th {
+                background-color: #f5f7fa;
+                color: #3b3f5c;
+                font-weight: 600;
+                padding: 12px 15px;
+                text-align: right;
+            }
+
+            .admin-table tbody td {
+                padding: 12px 15px;
+                border-bottom: 1px solid #f1f2f3;
+                color: #3b3f5c;
+            }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+            .status.completed {
+                background-color: rgba(0, 171, 85, 0.1);
+                color: #00ab55;
+            }
+
+            .status.pending {
+                background-color: rgba(226, 160, 63, 0.1);
+                color: #e2a03f;
+            }
+
+            .status.processing {
+                background-color: rgba(67, 97, 238, 0.1);
+                color: #4361ee;
+            }
+
+            .status.cancelled {
+                background-color: rgba(231, 81, 90, 0.1);
+                color: #e7515a;
+            }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #3b3f5c;
+            transition: all 0.3s;
+        }
+
+            .action-btn:hover {
+                background-color: #f5f7fa;
+            }
+
+            .action-btn.view {
+                color: #4361ee;
+            }
+
+            .action-btn.edit {
+                color: #e2a03f;
+            }
+
+            .action-btn.delete {
+                color: #e7515a;
+            }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Top Products Section */
+        .top-products {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .product-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+            .product-item:hover {
+                background-color: #f5f7fa;
+            }
+
+            .product-item img {
+                width: 60px;
+                height: 60px;
+                border-radius: 6px;
+                object-fit: cover;
+            }
+
+        .product-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            color: #3b3f5c;
+        }
+
+        .product-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+            color: #888ea8;
+        }
+
+        .sales {
+            font-weight: 600;
+        }
+
+        .rating {
+            color: #e2a03f;
+        }
+
+            .rating span {
+                color: #888ea8;
+            }
+
+        /* Recent Reviews Section */
+        .recent-reviews {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .review-item {
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #f5f7fa;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .customer-name {
+            font-weight: 600;
+            color: #3b3f5c;
+        }
+
+        .review-date {
+            font-size: 12px;
+            color: #888ea8;
+        }
+
+        .review-rating {
+            color: #e2a03f;
+            margin-bottom: 8px;
+        }
+
+        .review-text p {
+            margin: 0;
+            color: #3b3f5c;
+            line-height: 1.5;
+        }
+
+        /* Responsive Adjustments */
+     (max-width: 1200px) {
+            .dashboard-grid
+
+        {
+            grid-template-columns: 1fr;
+        }
+
+        }
+
+         (max-width: 768px) {
+            .header-right
+
+        {
+            gap: 15px;
+        }
+
+        .search-box input {
+            width: 150px;
+        }
+
+            .search-box input:focus {
+                width: 180px;
+            }
+
+        .admin-profile .profile-info {
+            display: none;
+        }
+
+        }
+    </style>
+}
+
+
+<!-- المحتوى الرئيسي -->
+<main class="main-content">
+    <header class="content-header">
+        <div class="header-left">
+            <button id="toggle-sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="date-display">
+                <i class="fas fa-calendar-alt"></i>
+                <span id="current-date"></span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="search-box">
+                <input type="text" placeholder="بحث...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="badge">3</span>
+                <div class="notifications-dropdown">
+                    <div class="notification-item unread">
+                        <i class="fas fa-shopping-cart"></i>
+                        <div class="notification-content">
+                            <p>طلب جديد #1234</p>
+                            <span>منذ 5 دقائق</span>
+                        </div>
+                    </div>
+                    <div class="notification-item unread">
+                        <i class="fas fa-star"></i>
+                        <div class="notification-content">
+                            <p>تقييم جديد 5 نجوم</p>
+                            <span>منذ 15 دقيقة</span>
+                        </div>
+                    </div>
+                    <div class="notification-item">
+                        <i class="fas fa-user"></i>
+                        <div class="notification-content">
+                            <p>عميل جديد مسجل</p>
+                            <span>منذ ساعة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-profile">
+                <img src="images/admin-avatar.jpg" alt="صورة المدير">
+                <div class="profile-info">
+                    <span class="name">المدير</span>
+                    <span class="role">مدير النظام</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- إحصائيات سريعة -->
+    <section class="stats-section">
+        <div class="stat-card">
+            <div class="stat-icon orders">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="stat-info">
+                <h3>الطلبات</h3>
+                <div class="stat-value">1,234</div>
+                <div class="stat-change positive">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>12%</span>
+                </div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon revenue">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="stat-info">
+                <h3>الإيرادات</h3>
+                <div class="stat-value">45,678 ريال</div>
+                <div class="stat-change positive">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>8%</span>
+                </div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon customers">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-info">
+                <h3>العملاء</h3>
+                <div class="stat-value">892</div>
+                <div class="stat-change positive">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>5%</span>
+                </div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon products">
+                <i class="fas fa-box"></i>
+            </div>
+            <div class="stat-info">
+                <h3>المنتجات</h3>
+                <div class="stat-value">156</div>
+                <div class="stat-change negative">
+                    <i class="fas fa-arrow-down"></i>
+                    <span>2%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الطلبات الأخيرة -->
+    <section class="recent-orders">
+        <div class="section-header">
+            <h2>الطلبات الأخيرة</h2>
+            <a href="admin-orders.html" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
+        </div>
+        <div class="table-responsive">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>رقم الطلب</th>
+                        <th>العميل</th>
+                        <th>التاريخ</th>
+                        <th>المبلغ</th>
+                        <th>الحالة</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#1234</td>
+                        <td>أحمد محمد</td>
+                        <td>15/05/2023</td>
+                        <td>350 ريال</td>
+                        <td><span class="status completed">مكتمل</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn view" title="عرض"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn edit" title="تعديل"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete" title="حذف"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#1233</td>
+                        <td>سارة أحمد</td>
+                        <td>14/05/2023</td>
+                        <td>280 ريال</td>
+                        <td><span class="status pending">قيد الانتظار</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn view" title="عرض"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn edit" title="تعديل"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete" title="حذف"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#1232</td>
+                        <td>محمد علي</td>
+                        <td>14/05/2023</td>
+                        <td>420 ريال</td>
+                        <td><span class="status processing">قيد المعالجة</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn view" title="عرض"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn edit" title="تعديل"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete" title="حذف"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#1231</td>
+                        <td>فاطمة خالد</td>
+                        <td>13/05/2023</td>
+                        <td>195 ريال</td>
+                        <td><span class="status cancelled">ملغي</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn view" title="عرض"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn edit" title="تعديل"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete" title="حذف"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- المنتجات الأكثر مبيعاً والتقييمات الأخيرة -->
+    <div class="dashboard-grid">
+        <!-- المنتجات الأكثر مبيعاً -->
+        <section class="top-products">
+            <div class="section-header">
+                <h2>المنتجات الأكثر مبيعاً</h2>
+                <a href="admin-products.html" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
+            </div>
+            <div class="product-list">
+                <div class="product-item">
+                    <img src="images/products/olive-oil-1.jpg" alt="زيت زيتون بكر ممتاز">
+                    <div class="product-info">
+                        <h3>زيت زيتون بكر ممتاز</h3>
+                        <div class="product-meta">
+                            <span class="sales">المبيعات: 245</span>
+                            <span class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(4.5)</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="images/products/black-olives-1.jpg" alt="زيتون أسود محشو">
+                    <div class="product-info">
+                        <h3>زيتون أسود محشو</h3>
+                        <div class="product-meta">
+                            <span class="sales">المبيعات: 150</span>
+                            <span class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(4.0)</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- التقييمات الأخيرة -->
+        <section class="recent-reviews">
+            <div class="section-header">
+                <h2>التقييمات الأخيرة</h2>
+                <a href="admin-reviews.html" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
+            </div>
+            <div class="reviews-list">
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="customer-name">أحمد محمد</span>
+                        <span class="review-date">15/05/2023</span>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="review-text">
+                        <p>منتج رائع جدًا. استخدمته لفترة وأعتبره الأفضل في السوق.</p>
+                    </div>
+                </div>
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="customer-name">سارة أحمد</span>
+                        <span class="review-date">14/05/2023</span>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="review-text">
+                        <p>ممتاز ولكن يحتاج تحسين في التعبئة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

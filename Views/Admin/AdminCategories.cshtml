@@ -1,0 +1,199 @@
+﻿@model List<Master__p.Models.Categorie>
+
+@{
+    Layout = "AdminLayout";
+}
+@section styles {
+    <link rel="stylesheet" href="~/style/AdminCategorise.css">
+
+    <style>
+        .main-content {
+            /* margin-right: var(--sidebar-width); */
+            padding: 20px;
+            min-height: 100vh;
+            transition: margin 0.3s;
+            width: 100%;
+        }
+    </style>
+}
+
+
+
+
+<!-- المحتوى الرئيسي -->
+<main class="main-content">
+    <header class="content-header">
+        <div class="header-search">
+            <input type="text" placeholder="بحث عن تصنيف...">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="header-actions">
+            <a asp-action="AddِCategoryAdmin" asp-controller="Admin" class="primary-btn">
+                <i class="fas fa-plus"></i>
+                إضافة تصنيف جديد
+            </a>
+        </div>
+     
+    </header>
+
+    <!-- هيكل عرض التصنيفات -->
+    <div class="categories-container">
+        <!-- عرض التصنيفات الرئيسية -->
+
+        <div class="main-categories">
+            <h3>التصنيفات الرئيسية</h3>
+            <div class="categories-grid">
+                @foreach (var category in Model)
+                {
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="~/images/categories/default.png" alt="@category.Name" />
+                        </div>
+                        <div class="category-info">
+                            <h4>@category.Name</h4>
+                           
+                            <div class="category-actions">
+                                <button class="action-btn view" title="عرض">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <a asp-action="EditCategory" asp-route-id="@category.Id" class="action-btn edit" title="تعديل">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form asp-action="DeleteCategory" asp-controller="Admin" method="post" style="display:inline;">
+                                    <input type="hidden" name="id" value="@category.Id" />
+                                    <button type="submit" class="action-btn delete" title="حذف" onclick="return confirm('هل أنت متأكد أنك تريد الحذف؟');">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    
+   
+
+ 
+
+<!-- نافذة عرض تفاصيل التصنيف -->
+<div class="modal" id="category-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modal-title">تفاصيل التصنيف</h3>
+            <button class="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="category-details">
+                <div class="category-image-preview">
+                    <img id="category-image" src="" alt="صورة التصنيف">
+                </div>
+                <div class="category-info-details">
+                    <div class="detail-group">
+                        <label>اسم التصنيف:</label>
+                        <span id="category-name"></span>
+                    </div>
+                    <div class="detail-group">
+                        <label>التصنيف الرئيسي:</label>
+                        <span id="parent-category"></span>
+                    </div>
+                    <div class="detail-group">
+                        <label>الوصف:</label>
+                        <p id="category-description"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>عدد المنتجات:</label>
+                        <span id="products-count"></span>
+                    </div>
+                    <div class="detail-group">
+                        <label>الترتيب:</label>
+                        <span id="category-order"></span>
+                    </div>
+                    <div class="detail-group">
+                        <label>الحالة:</label>
+                        <span id="category-status"></span>
+                    </div>
+                    <div class="detail-group">
+                        <label>تاريخ الإنشاء:</label>
+                        <span id="category-created"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="secondary-btn close-modal">إغلاق</button>
+            <button class="primary-btn" id="edit-category-btn">تعديل</button>
+        </div>
+    </div>
+</div>
+
+<!-- نافذة إضافة/تعديل التصنيف -->
+<div class="modal" id="edit-category-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="edit-modal-title">إضافة تصنيف جديد</h3>
+            <button class="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="edit-category-form">
+                <div class="form-group">
+                    <label for="category-name-input">اسم التصنيف</label>
+                    <input type="text" id="category-name-input" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="parent-category-input">التصنيف الرئيسي</label>
+                    <select id="parent-category-input" name="parent">
+                        <option value="">بدون (تصنيف رئيسي)</option>
+                        <option value="1">زيوت طبيعية</option>
+                        <option value="2">عسل طبيعي</option>
+                        <option value="3">صابون طبيعي</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="category-description-input">الوصف</label>
+                    <textarea id="category-description-input" name="description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="category-image-input">صورة التصنيف</label>
+                    <div class="image-upload-container">
+                        <input type="file" id="category-image-input" name="image" accept="image/*">
+                        <div class="image-preview" id="image-preview">
+                            <img id="preview-img" src="images/placeholder.png" alt="معاينة الصورة">
+                        </div>
+                        <button type="button" class="secondary-btn" id="browse-image">اختيار صورة</button>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category-order-input">الترتيب</label>
+                        <input type="number" id="category-order-input" name="order" min="1" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="category-status-input">الحالة</label>
+                        <select id="category-status-input" name="status" required>
+                            <option value="active">نشط</option>
+                            <option value="inactive">غير نشط</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category-meta-title">عنوان الميتا (SEO)</label>
+                    <input type="text" id="category-meta-title" name="meta_title">
+                </div>
+                <div class="form-group">
+                    <label for="category-meta-description">وصف الميتا (SEO)</label>
+                    <textarea id="category-meta-description" name="meta_description" rows="2"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="secondary-btn" id="cancel-edit">إلغاء</button>
+            <button class="primary-btn" id="save-category">حفظ</button>
+        </div>
+    </div>
+</div>

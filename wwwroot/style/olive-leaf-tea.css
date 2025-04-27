@@ -731,9 +731,9 @@
     margin-bottom: 10px;
 }
 
-.section-header p {
-    color: #666;
-}
+    .section-header p {
+        color: #ffffff;
+    }
 
 .product-grid {
     display: grid;

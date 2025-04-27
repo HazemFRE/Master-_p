@@ -100,14 +100,11 @@ public partial class MyDbContext : DbContext
             entity.ToTable("categorie");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Description)
-                .HasMaxLength(500)
-                .IsUnicode(false)
-                .HasColumnName("description");
-            entity.Property(e => e.Name)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("name");
+            entity.Property(e => e.Description).HasColumnName("description");
+            entity.Property(e => e.Img)
+                .HasMaxLength(100)
+                .HasColumnName("img");
+            entity.Property(e => e.Name).HasColumnName("name");
         });
 
         modelBuilder.Entity<Contact>(entity =>

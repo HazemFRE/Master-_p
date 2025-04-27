@@ -2,13 +2,140 @@
 <html lang="ar" dir="rtl">
 
 <head>
+    @if (IsSectionDefined("Styles"))
+{
+    @RenderSection("Styles", required: false)
+}
+else
+{
+    <!-- يمكنك وضع أنماط افتراضية هنا إذا أردت -->
+}
+    <title>إدارة العملاء - لوحة التحكم</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إدارة العملاء - لوحة التحكم</title>
-    <link rel="stylesheet" href="~/style/admin-dashboard.css">
-    <link rel="stylesheet" href="~/style/admin-customers.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>لوحة التحكم | زيت الزيتون</title>
+    @* <link rel="stylesheet" href="~/css/admin-dashboard.css"> *@
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ <style >
+        /* قاعدة عامة */
+        body {
+            margin: 0;
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        /* الحاوية الأساسية */
+        .admin-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* الشريط الجانبي */
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            /* justify-content: space-between; */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-header {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+            .sidebar-header h2 {
+                margin: 0;
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+        .sidebar-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+            .sidebar-nav li a {
+                display: flex;
+                align-items: center;
+                padding: 15px 20px;
+                color: #ecf0f1;
+                text-decoration: none;
+                transition: background 0.3s, color 0.3s;
+                font-size: 18px;
+            }
+
+                .sidebar-nav li a i {
+                    margin-right: 10px;
+                    font-size: 20px;
+                }
+
+            .sidebar-nav li:hover a,
+            .sidebar-nav li.active a {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: #ffd700;
+            }
+
+        /* الفوتر في القائمة */
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+            .sidebar-footer a {
+                color: #ecf0f1;
+                font-size: 18px;
+                text-decoration: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+                .sidebar-footer a i {
+                    margin-right: 8px;
+                }
+
+        /* محتوى الصفحة */
+        main {
+            flex: 1;
+            padding: 30px;
+            background-color: #f4f6f9;
+        }
+
+        /* لمسة إضافية للأزرار أو العناصر التفاعلية */
+        button, a.button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            button:hover, a.button:hover {
+                background-color: #2980b9;
+            }
+
+        /* تحكم بالآيقونات لتكون مناسبة مع RTL */
+        .sidebar-nav li a i {
+            margin-left: 10px;
+            margin-right: 0;
+        }
+
+ </style>
 </head>
+    
 
 <body>
     <div class="admin-container">
@@ -17,164 +144,70 @@
             <div class="sidebar-header">
                 <h2>لوحة التحكم</h2>
             </div>
+
             <nav class="sidebar-nav">
                 <ul>
                     <li>
-                        <a href="admin-dashboard.html">
+                        <a asp-controller="Admin" asp-action="AdminDashboard">
                             <i class="fas fa-home"></i>
-                            <span>الرئيسية</span>
+                            الرئيسية
                         </a>
                     </li>
                     <li>
-                        <a href="admin-products.html">
+                        <a asp-controller="Admin" asp-action="AdminProducts">
                             <i class="fas fa-box"></i>
-                            <span>المنتجات</span>
+                            المنتجات
                         </a>
                     </li>
                     <li>
-                        <a href="admin-orders.html">
+                        <a asp-controller="Admin" asp-action="AdminOrders">
                             <i class="fas fa-shopping-cart"></i>
-                            <span>الطلبات</span>
+                            الطلبات
                         </a>
                     </li>
                     <li class="active">
-                        <a href="admin-customers.html">
+                        <a asp-controller="Admin" asp-action="AdminCustomers">
                             <i class="fas fa-users"></i>
-                            <span>العملاء</span>
+                            العملاء
                         </a>
                     </li>
                     <li>
-                        <a href="admin-categories.html">
+                        <a asp-controller="Admin" asp-action="AdminCategories">
                             <i class="fas fa-tags"></i>
-                            <span>التصنيفات</span>
+                            التصنيفات
                         </a>
                     </li>
                     <li>
-                        <a href="admin-reviews.html">
+                        <a asp-controller="Admin" asp-action="AdminReviews">
                             <i class="fas fa-star"></i>
-                            <span>التقييمات</span>
+                            التقييمات
                         </a>
                     </li>
                     <li>
-                        <a href="admin-settings.html">
-                            <i class="fas fa-cog"></i>
-                            <span>الإعدادات</span>
+                        <a asp-controller="Admin" asp-action="Users">
+                            <i class="fas fa-user"></i>
+                            المستخدمين
                         </a>
                     </li>
                 </ul>
             </nav>
+
             <div class="sidebar-footer">
-                <a href="#" id="logout-btn">
+                <a asp-controller="User" asp-action="Login" id="logout-btn">
                     <i class="fas fa-sign-out-alt"></i>
-                    <span>تسجيل الخروج</span>
+                    تسجيل الخروج
                 </a>
             </div>
         </aside>
 
-     @RenderBody()
+        @RenderBody()
     </div>
 
-    <!-- نافذة عرض تفاصيل العميل -->
-    <div class="modal" id="customer-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modal-title">تفاصيل العميل</h3>
-                <button class="close-modal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="customer-details">
-                    <div class="detail-group">
-                        <label>الاسم:</label>
-                        <span id="customer-name"></span>
-                    </div>
-                    <div class="detail-group">
-                        <label>البريد الإلكتروني:</label>
-                        <span id="customer-email"></span>
-                    </div>
-                    <div class="detail-group">
-                        <label>رقم الهاتف:</label>
-                        <span id="customer-phone"></span>
-                    </div>
-                    <div class="detail-group">
-                        <label>تاريخ التسجيل:</label>
-                        <span id="customer-register-date"></span>
-                    </div>
-                    <div class="detail-group">
-                        <label>الحالة:</label>
-                        <span id="customer-status"></span>
-                    </div>
-                </div>
-                <div class="customer-orders">
-                    <h4>طلبات العميل</h4>
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>رقم الطلب</th>
-                                <th>التاريخ</th>
-                                <th>المبلغ</th>
-                                <th>الحالة</th>
-                            </tr>
-                        </thead>
-                        <tbody id="customer-orders-list">
-                            <!-- سيتم تعبئة هذا القسم ديناميكياً -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="secondary-btn close-modal">إغلاق</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- نافذة إضافة/تعديل العميل -->
-    <div class="modal" id="edit-customer-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="edit-modal-title">إضافة عميل جديد</h3>
-                <button class="close-modal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="edit-customer-form">
-                    <div class="form-group">
-                        <label for="customer-name-input">الاسم</label>
-                        <input type="text" id="customer-name-input" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="customer-email-input">البريد الإلكتروني</label>
-                        <input type="email" id="customer-email-input" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="customer-phone-input">رقم الهاتف</label>
-                        <input type="tel" id="customer-phone-input" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="customer-status-input">الحالة</label>
-                        <select id="customer-status-input" name="status" required>
-                            <option value="active">نشط</option>
-                            <option value="inactive">غير نشط</option>
-                            <option value="blocked">محظور</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="customer-notes">ملاحظات</label>
-                        <textarea id="customer-notes" name="notes" rows="3"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="secondary-btn" id="cancel-edit">إلغاء</button>
-                <button class="primary-btn" id="save-customer">حفظ</button>
-            </div>
-        </div>
-    </div>
+    @await RenderSectionAsync("Scripts", required: false)
 
     <script src="js/admin-dashboard.js"></script>
     <script src="js/admin-customers.js"></script>
 </body>
+
 
 </html>

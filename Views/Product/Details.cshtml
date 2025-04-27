@@ -15,19 +15,19 @@
             <div class="main-image">
                 <img src="@Model.Image" alt="@Model.Name" />
             </div>
-            <div class="thumbnail-images">
-                @if (Model.Image != null && Model.Image.Any())
-                {
-                    foreach (var img in Model.Image)
-                    {
-                        <img src="@img" alt="@Model.Name" />
-                    }
-                }
-                else
-                {
-                    <img src="@Model.Image" alt="@Model.Name" />
-                }
-            </div>
+            @* <div class="thumbnail-images"> *@
+            @*     @if (Model.Image != null && Model.Image.Any()) *@
+            @*     { *@
+            @*         foreach (var img in Model.Image) *@
+            @*         { *@
+            @*             <img src="@img" alt="@Model.Name" /> *@
+            @*         } *@
+            @*     } *@
+            @*     else *@
+            @*     { *@
+            @*         <img src="@Model.Image" alt="@Model.Name" /> *@
+            @*     } *@
+            @* </div> *@
         </div>
 
         <!-- Product Info -->

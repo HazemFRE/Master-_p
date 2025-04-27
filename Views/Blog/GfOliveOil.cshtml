@@ -1,0 +1,61 @@
+﻿@model Master__p.Models.Postss
+@{
+    ViewData["Title"] = "زيت الزيتون بنكهة الثوم";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link href="~/style/GfOliveOil.css" rel="stylesheet" />
+}
+
+<body>
+    <div class="product-page">
+        <div class="product-container">
+            <div class="product-image">
+                <img src="https://d2s63a22uzwg40.cloudfront.net/1/3/3/5/8/2/1/55bd1f769ce79.jpg" alt="صورة زيت الزيتون بنكهة الثوم">
+            </div>
+            <div class="product-info">
+                <div class="product-header">
+                    <h1 class="product-title">زيت الزيتون بنكهة الثوم</h1>
+                    <p class="product-subtitle">نكهة غنية تجمع بين الفائدة الصحية والطعم الرائع</p>
+                </div>
+
+                <p class="product-description">
+                    زيت الزيتون بنكهة الثوم هو مزيج مثالي يجمع بين فوائد زيت الزيتون البكر الطبيعي ونكهة الثوم الغنية، ما يجعله خياراً صحياً ولذيذاً لإضافة نكهة مميزة على أطباقك المفضلة.
+                </p>
+                <p class="product-description">
+                    يتمتع هذا الزيت بخصائص مضادة للأكسدة ومضادة للالتهابات بفضل مكوناته الطبيعية، كما يساهم في تعزيز المناعة وتحسين صحة القلب. يمكن استخدامه في تتبيل السلطات، الطهي، أو حتى كصلصة غمس شهية.
+                </p>
+                <p class="product-description">
+                    تم تحضير الزيت بعناية فائقة للحفاظ على نكهته الأصلية وجودته العالية، مما يضمن لك تجربة مذاق فريدة وفعالة صحياً في آنٍ واحد. مثالي لعشّاق النكهات القوية والطبيعية.
+                </p>
+
+                <div class="features-list">
+                    <div class="feature-item">
+                        <i class="feature-icon">✓</i>
+                        <span>طبيعي 100% بدون إضافات صناعية</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon">✓</i>
+                        <span>غني بمضادات الأكسدة وفيتامين E</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon">✓</i>
+                        <span>نكهة ثوم طبيعية مميزة</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon">✓</i>
+                        <span>مثالي للسلطات والمأكولات المتوسطية</span>
+                    </div>
+                </div>
+
+                <div class="rating">
+                    <div class="stars">★★★★★</div>
+                    <span class="rating-count">(87 تقييم)</span>
+                </div>
+
+				<a asp-action="index" asp-controller="Home" >العودة للصفحة الرئيسية </a>
+
+            </div>
+        </div>
+    </div>
+</body>

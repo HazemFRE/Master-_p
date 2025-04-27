@@ -3,64 +3,313 @@
 @{
     ViewData["Title"] = "جميع المنتجات";
 }
+@section Styles {
+	<link rel="stylesheet" href="~/css/Allproduct.css" />
+}
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
+
 <style>
+    .products-section {
+        background-color: #f8f9fa;
+        padding: 3rem 0;
+    }
+    
+    .section-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    
+    .section-title {
+        position: relative;
+        display: inline-block;
+        font-weight: 700;
+        color: #2c3e50;
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        right: 0;
+        width: 80px;
+        height: 4px;
+        background: #d4a017;
+    }
+
     .product-card {
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        border-radius: 15px;
-        transition: transform 0.2s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        height: 100%;
+        border: none;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .product-image-container {
+        height: 220px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .product-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-image {
+        transform: scale(1.05);
+    }
+
+    .product-badge {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: #d4a017;
+        color: #fff;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .stock-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #28a745;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .out-of-stock {
+        background: #dc3545 !important;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
         height: 100%;
     }
 
-        .product-card:hover {
-            transform: scale(1.02);
-        }
-
-    .product-image {
-        height: 200px;
-        object-fit: cover;
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
+    .product-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 0.75rem;
     }
 
-    .product-title {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: #2c3e50;
+    .product-description {
+        color: #6c757d;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        flex-grow: 1;
+    }
+
+    .product-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
     }
 
     .product-price {
         color: #28a745;
-        font-weight: 600;
-        font-size: 1.2rem;
+        font-weight: 700;
+        font-size: 1.3rem;
+    }
+
+    .product-category {
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+
+    .product-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: auto;
     }
 
     .btn-details {
-        margin-top: 10px;
+        background: #2c5e48;
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        flex: 1;
+        text-align: center;
     }
+
+    .btn-cart {
+        background: #d4a017;
+        color: #2c3e50;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .btn-details:hover {
+        background: #1e4535;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+
+    .btn-cart:hover:not(.btn-disabled) {
+        background: #c19115;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+
+    .empty-products {
+        text-align: center;
+        padding: 3rem;
+        color: #6c757d;
+    }
+
+    .empty-products i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #d4a017;
+    }
+
+    .rating {
+        color: #ffc107;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        height: 80%;
 </style>
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4">🛒 جميع المنتجات</h2>
+<section class="products-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">منتجاتنا المميزة</h2>
+            <p class="text-muted">استكشف مجموعة منتجاتنا عالية الجودة</p>
+        </div>
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-
-        @foreach (var product in Model)
+        @if (Model.Any())
         {
-            <div class="col">
-                <div class="card product-card h-100">
-                    <img src="@product.Image" class="card-img-top product-image" alt="@product.Name" />
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="product-title">@product.Name</h5>
-                        <p class="card-text">@product.Description</p>
-                        <div class="product-price">💰 @product.Price د.أ</div>
-                        <a href="/Product/Details/@product.Id" class="btn btn-outline-primary mt-auto btn-details">تفاصيل المنتج</a>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+                @foreach (var product in Model)
+                {
+                    <div class="col">
+                        <div class="card product-card h-100">
+                            <div class="product-image-container">
+                                <img src="@(product.Image ?? "/images/default-product.png")" class="product-image" alt="@product.Name" />
+                                
+                                @if (product.StockQuantity > 0 && product.StockQuantity < 10)
+                                {
+                                    <span class="product-badge">آخر قطاعات</span>
+                                }
+                                else if (product.StockQuantity == 0)
+                                {
+                                    <span class="product-badge out-of-stock">نفذ من المخزن</span>
+                                }
+                                
+                                <span class="stock-badge @(product.StockQuantity == 0 ? "out-of-stock" : "")">
+                                    @(product.StockQuantity > 0 ? $"{product.StockQuantity} متوفر" : "غير متوفر")
+                                </span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="product-title">@product.Name</h5>
+                                
+                                @if (product.Reviews != null && product.Reviews.Any())
+                                {
+                                    <div class="rating">
+                                        @{
+                                            var avgRating = product.Reviews.Average(r => r.Rating);
+                                            var fullStars = (int)avgRating;
+                                            var hasHalfStar = avgRating - fullStars >= 0.5;
+                                        }
+                                        
+                                        @for (int i = 1; i <= 5; i++)
+                                        {
+                                            if (i <= fullStars)
+                                            {
+                                                <i class="fas fa-star"></i>
+                                            }
+                                            else if (i == fullStars + 1 && hasHalfStar)
+                                            {
+                                                <i class="fas fa-star-half-alt"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="far fa-star"></i>
+                                            }
+                                        }
+                                        <small>(@product.Reviews.Count)</small>
+                                    </div>
+                                }
+                                
+                                <p class="product-description">
+                                    @(string.IsNullOrEmpty(product.Description) ? "لا يوجد وصف متاح" : product.Description)
+                                </p>
+                                
+                                <div class="product-meta">
+                                    <div class="product-price">@product.Price.ToString("0.00") د.أ</div>
+                                    @if (product.Category != null)
+                                    {
+                                        <span class="product-category">
+                                            <i class="fas fa-tag"></i> @product.Category.Name
+                                        </span>
+                                    }
+                                </div>
+                                
+                                <div class="product-actions">
+                                    <a href="/Product/Details/@product.Id" class="btn btn-details">
+                                        <i class="fas fa-info-circle"></i> التفاصيل
+                                    </a>
+                                    <button class="btn btn-cart @(product.StockQuantity == 0 ? "btn-disabled" : "")"
+                                            @(product.StockQuantity == 0 ? "disabled" : "")>
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                }
+
+            </div>
+        }
+        else
+        {
+            <div class="empty-products">
+                <i class="fas fa-box-open"></i>
+                <h4>لا توجد منتجات متاحة حالياً</h4>
+                <p>سنقوم بإضافة منتجات جديدة قريباً</p>
+                <a href="/" class="btn btn-primary mt-3">العودة للرئيسية</a>
             </div>
         }
 
     </div>
-</div>
+</section>
