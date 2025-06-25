@@ -5,7 +5,7 @@
     --secondary-dark: #b58a14;
     --light: #f8f5f0;
     --dark: #1a2e24;
-    --text: #333;
+    --text: #222; /* Darkened for better contrast */
     --light-text: #6a6a6a;
     --white: #fff;
     --overlay: rgba(0, 0, 0, 0.6);
@@ -17,6 +17,7 @@ body {
     color: var(--text);
     line-height: 1.7;
     overflow-x: hidden;
+    margin: 0; /* Ensure no default margin */
 }
 
 .container {
@@ -26,7 +27,13 @@ body {
     padding: 0 20px;
 }
 
-/* قسم الهيرو */
+    .container p {
+        font-size: 1.2rem; /* Adjusted for harmony */
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+/* Hero Section */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -109,6 +116,11 @@ body {
     text-align: center;
 }
 
+    .btn:focus {
+        outline: 3px solid var(--secondary);
+        outline-offset: 2px;
+    }
+
 .btn-primary {
     background: var(--secondary);
     color: var(--dark);
@@ -161,7 +173,7 @@ body {
             animation: scroll 2s infinite;
         }
 
-/* قسم من نحن */
+/* About Section */
 .about-section {
     padding: 100px 0;
     background: var(--light);
@@ -189,6 +201,11 @@ body {
 
 .section-subtitle {
     color: var(--light-text);
+    font-size: 1.1rem;
+}
+
+.section-header p {
+    color: var(--light-text); /* Consolidated rule */
     font-size: 1.1rem;
 }
 
@@ -290,7 +307,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* قسم الجودة */
+/* Quality Section */
 .quality-section {
     position: relative;
     padding: 100px 0;
@@ -346,7 +363,7 @@ body {
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* قسم الشهادات */
+/* Certificates Section */
 .certificates-section {
     padding: 100px 0;
     background: var(--light);
@@ -411,7 +428,7 @@ body {
     transform: translateY(0);
 }
 
-/* قسم الاتصال */
+/* Contact Section */
 .contact-section {
     display: flex;
     min-height: 500px;
@@ -483,7 +500,7 @@ body {
         border: none;
     }
 
-/* تأثيرات الحركة */
+/* Animations */
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
@@ -510,7 +527,7 @@ body {
     }
 }
 
-/* التجاوب مع أحجام الشاشات */
+/* Responsive Design */
 @media (max-width: 1200px) {
     .hero-title {
         font-size: 3rem;
@@ -567,7 +584,7 @@ body {
 
     .btn {
         width: 100%;
-        max-width: 250px;
+        max-width: 300px; /* Slightly increased for better touch targets */
         margin: 0 auto;
     }
 
@@ -595,15 +612,8 @@ body {
     .feature-icon {
         margin: 0 auto;
     }
-}
-.container p {
-    font-size: 23px;
-    margin-bottom: 15px;
-    text-align: center;
-}
-.section-header p {
-     color: #fff !important; 
-}
-.section-header p {
-    color: #666;
+
+    .hero-title {
+        font-size: 2rem;
+    }
 }

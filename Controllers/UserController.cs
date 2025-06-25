@@ -81,7 +81,7 @@ namespace Master__p.Controllers
 
             if(email == "Admin@gmail.com" && password == "123")
             {
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("AdminDashboard", "Admin");
             }
             var user = await _context.Usersses
                 .FirstOrDefaultAsync(u => u.Email == email && u.Password == password);

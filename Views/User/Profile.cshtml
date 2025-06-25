@@ -5,17 +5,308 @@
 @section Styles {
     <link rel="stylesheet" href="@Url.Content("~/css/StyleSheetProfile.css")" />
     <style>
+        /* أنماط عامة */
+        .profile-page {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa, #e9f5e9);
+            min-height: 100vh;
+            direction: rtl;
+            padding: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+
         .container {
-             max-width: 100% !important;  
-            margin: 40px auto;
+            max-width: 100% !important;
+            margin: 0 auto;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .profile-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            background: white;
+            margin-bottom: 2rem;
+        }
+
+        /* رأس البروفايل */
+        .profile-header {
+            background: linear-gradient(135deg, #355E3B, #4a7a52);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            color: white;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+            .profile-image:hover {
+                transform: scale(1.05);
+                border-color: rgba(255, 255, 255, 0.6);
+            }
+
+        .profile-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-align: center;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        /* زر التعديل */
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 0.6rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0.5rem;
+        }
+
+            .btn-primary:hover {
+                background: white;
+                color: #355E3B;
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .btn-primary:focus {
+                outline: 3px solid #4a7a52;
+                outline-offset: 2px;
+            }
+
+            .btn-primary i {
+                margin-right: 8px;
+                font-size: 1.1rem;
+            }
+
+        .badge-natural {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* قسم الإحصائيات */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            background: #f0f4ec;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .stat-item {
+            padding: 0 2.5rem;
+            text-align: center;
+        }
+
+            .stat-item:not(:last-child) {
+                border-left: 1px solid rgba(53, 94, 59, 0.2);
+            }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #355E3B;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            color: #5a8c64;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* المحتوى الرئيسي */
+        .profile-content {
+            padding: 3rem 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #355E3B;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-right: 1.2rem;
+        }
+
+            .section-title::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -8px;
+                width: 60px;
+                height: 3px;
+                background: linear-gradient(to left, #355E3B, #5a8c64);
+                border-radius: 3px;
+            }
+
+        /* قسم "حول المشروع" */
+        .about-content {
+            background: #f8faf6;
+            border-radius: 12px;
+            padding: 2rem;
+            border-right: 4px solid #355E3B;
+            text-align: right;
+        }
+
+        .about-text {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+            .about-text i {
+                margin-right: 1rem;
+                margin-top: 0.3rem;
+                color: #5a8c64;
+                font-size: 1.3rem;
+            }
+
+            .about-text span {
+                flex: 1;
+            }
+
+        /* النص المركزي */
+        .centered-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #355E3B;
+            font-size: 2rem;
+            font-weight: 700;
+            z-index: 1;
+            pointer-events: none; /* لمنع التفاعل مع النص */
+        }
+
+        /* التجاوبية */
+        media (max-width: 992px) {
+            .profile-header
+
+        {
+            padding: 2.5rem 1.5rem;
+        }
+
+        .profile-title {
+            font-size: 1.8rem;
+        }
+
+        .profile-subtitle {
+            font-size: 1.1rem;
+        }
+
+        .centered-text {
+            font-size: 1.5rem;
+        }
+
+        }
+
+        media (max-width: 768px) {
+            .profile-header
+
+        {
+            padding: 2rem 1rem;
+        }
+
+        .profile-title {
+            font-size: 1.6rem;
+        }
+
+        .profile-subtitle {
+            font-size: 1rem;
+        }
+
+        .stats-container {
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .stat-item {
+            padding: 0;
+            border-left: none;
+        }
+
+        .profile-content {
+            padding: 2rem 1.5rem;
+        }
+
+        .centered-text {
+            font-size: 1.3rem;
+        }
+
+        }
+
+        media (max-width: 576px) {
+            .profile-image
+
+        {
+            width: 120px;
+            height: 120px;
+        }
+
+        .profile-header {
+            padding: 1.5rem 1rem;
+        }
+
+        .profile-title {
+            font-size: 1.4rem;
+        }
+
+        .profile-subtitle {
+            font-size: 0.9rem;
+        }
+
+        .profile-content {
+            padding: 1.5rem 1rem;
+        }
+
+        .centered-text {
+            font-size: 1.1rem;
+        }
+
         }
     </style>
-   
 }
 
 <section class="profile-page">
@@ -28,21 +319,16 @@
                         <img src="https://i.pinimg.com/originals/09/21/fc/0921fc87aa989330b8d403014bf4f340.jpg"
                              alt="صورة البروفايل"
                              class="profile-image">
-
                         <h1 class="profile-title">قطرة نقاء</h1>
-                        <p class="profile-subtitle">منتجات طبيعية 100% من خيرات الأرض</p>
-                        <div class="mt-3">
-                            <a asp-action="ChangePassword" asp-controller="User" class="btn btn-primary">
-                                <i class="fas fa-user-edit"></i> تغيير كلمة السر 
-                            </a>
-                        </div>
-                    </div>
-
                         <div class="mt-3">
                             <a asp-action="EditProfile" asp-controller="User" class="btn btn-primary">
                                 <i class="fas fa-user-edit"></i> تعديل الملف الشخصي
                             </a>
-
+                            <a asp-action="ChangePassword" asp-controller="User" class="btn btn-primary">
+                                <i class="fas fa-user-edit"></i> تغيير كلمة السر
+                            </a>
+                        </div>
+                        <div class="mt-3">
                             <span class="badge-natural">
                                 <i class="fas fa-leaf"></i> طبيعي بالكامل
                             </span>
@@ -85,61 +371,10 @@
                                 </p>
                             </div>
                         </div>
-
-                        <!-- المنتجات -->
-                        <div>
-                            <div class="d-flex justify-content-between align-items-center mb-4">
-                                <h3 class="section-title">أحدث المنتجات</h3>
-                            <a  class="view-all" asp-action="Allproduct" asp-controller="Product">
-                                    عرض الكل <i class="fas fa-arrow-left"></i>
-                                </a>
-                            </div>
-
-                            <div class="product-grid">
-                                <div class="product-card">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjhOAYWpvCq4uwd4V9Z0gF1Y_W97nEaNe53Q&s"
-                                         alt="زيت زيتون بكر ممتاز"
-                                         class="product-image">
-                                    <div class="product-info">
-                                        <div class="product-name">زيت زيتون بكر</div>
-                                        <div class="product-price">25 دينار</div>
-                                    </div>
-                                </div>
-
-                                <div class="product-card">
-                                    <img src="https://i.pinimg.com/736x/eb/39/48/eb39485ca691eb343b471495d934b6bf.jpg"
-                                         alt="زيتون رصيع"
-                                         class="product-image">
-                                    <div class="product-info">
-                                        <div class="product-name">رصيع زيتون بلدي</div>
-                                        <div class="product-price">7 دينار</div>
-                                    </div>
-                                </div>
-
-                                <div class="product-card">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCLfnF-QlF9daKPwmQgiGanu9gDD0ipnZU0g&s"
-                                         alt="سلطة الزيتون بمذاق رائع"
-                                         class="product-image">
-                                    <div class="product-info">
-                                        <div class="product-name">سلطة الزيتون</div>
-                                        <div class="product-price">12 دينار</div>
-                                    </div>
-                                </div>
-
-                                <div class="product-card">
-                                    <img src="~/IMG/6033084928436061920.jpg"
-                                         alt="عبوة زيت مميزة"
-                                         class="product-image">
-                                    <div class="product-info">
-                                        <div class="product-name">عبوة مميزة</div>
-                                        <div class="product-price">30 دينار</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="centered-text">منتجات طبيعية 100% من خيرات الأرض</div>
 </section>

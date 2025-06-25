@@ -42,26 +42,26 @@
                 <div class="nav-brand">
                     <img src="/IMG/download.png" alt="قطرة نقاء" class="logo">
                 </div>
-				<div class="nav-menu">
-                    <a asp-action="Index" asp-controller="Home" class="nav-link active">الرئيسية</a>
-                    <a href="/Product/Allproduct" class="nav-link active">منتجاتنا</a>
-                    <a asp-action="Antiques" asp-controller="Product" class="nav-link">التحف الاثرية </a>
-                    <a asp-action="Profile" asp-controller="User" class="nav-link">الملف الشخصي</a>
-                    <a asp-action="Blog" asp-controller="Blog" class="nav-link">المدونة</a>
-                    <a asp-action="AboutUs" asp-controller="Home" class="nav-link">من نحن</a>
-                    <a asp-action="ContactUs" asp-controller="Home" class="nav-link">تواصل معنا</a>
-                   
+                <div class="nav-menu" style="text-align: center; margin: 10px 0;">
+                    <a asp-action="Index" asp-controller="Home" class="nav-link active" style="font-size: 18px; margin: 0 10px; color: #000; text-decoration: none;">الرئيسية</a>
+                    <a href="/Product/Allproduct" class="nav-link active" style="font-size: 18px; margin: 0 10px; color: #000; text-decoration: none;">منتجاتنا</a>
+                    <a asp-action="Antiques" asp-controller="Product" class="nav-link" style="font-size: 18px; margin: 0 10px; color: #000; text-decoration: none;">التحف الاثرية</a>
+                    <a asp-action="Blog" asp-controller="Blog" class="nav-link" style="font-size: 18px; margin: 0 10px; color: #000; text-decoration: none;">المدونة</a>
+                    <a asp-action="AboutUs" asp-controller="Home" class="nav-link" style="font-size: 18px; margin: 0 10px; color: #000; text-decoration: none;">من نحن</a>
+                    <a asp-action="ContactUs" asp-controller="Home" class="nav-link" style="font-size: 18px; margin: 0 10px; color: #000; text-decoration: none;">تواصل معنا</a>
+
                     @if (Context.Session.GetString("UserEmail") == null)
                     {
-                        <a asp-action="Login" asp-controller="User" class="nav-link">تسجيل الدخول</a>
-                        <a asp-action="Register" asp-controller="User" class="nav-link"> انشاء حساب</a>
+                        <a asp-action="Login" asp-controller="User" class="nav-link" style="font-size: 18px; margin: 0 10px; color: #000; text-decoration: none;">تسجيل الدخول</a>
+                        <a asp-action="Register" asp-controller="User" class="nav-link" style="font-size: 18px; margin: 0 10px; color: #000; text-decoration: none;">انشاء حساب</a>
                     }
-                    else{
-						
-						<a asp-action="Logout" asp-controller="User" class="nav-link">تسجيل الخروج</a>
+                    else
+                    {
+                        <a asp-action="Profile" asp-controller="User" class="nav-link" style="font-size: 18px; margin: 0 10px; color: #000; text-decoration: none;">الملف الشخصي</a>
+                        <a asp-action="Logout" asp-controller="User" class="nav-link" style="font-size: 18px; margin: 0 10px; color: #000; text-decoration: none;">تسجيل الخروج</a>
                     }
-
                 </div>
+
                 <div class="nav-tools">
                     <div class="search-box">
                         <input type="text" placeholder="ابحث عن منتج...">

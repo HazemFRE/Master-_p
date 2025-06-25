@@ -32,7 +32,7 @@
     object-fit: cover;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     margin-bottom: 1.5rem;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease; /* Standardized transition */
 }
 
     .profile-image:hover {
@@ -74,8 +74,13 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
+    .btn-primary:focus {
+        outline: 3px solid #4a7a52;
+        outline-offset: 2px;
+    }
+
     .btn-primary i {
-        margin-left: 8px;
+        margin-right: 8px; /* Fixed for RTL */
         font-size: 1.1rem;
     }
 
@@ -85,7 +90,7 @@
     padding: 0.5rem 1.2rem;
     border-radius: 30px;
     font-size: 0.9rem;
-    margin-right: 1rem;
+    margin-left: 1rem; /* Fixed for RTL */
 }
 
 /* قسم الإحصائيات */
@@ -93,7 +98,7 @@
     display: flex;
     justify-content: center;
     background: #f0f4ec;
-    padding: 1.8rem;
+    padding: 1.5rem; /* Standardized padding */
 }
 
 .stat-item {
@@ -135,11 +140,11 @@
     .section-title::after {
         content: "";
         position: absolute;
-        right: 0;
+        left: 0; /* Fixed for RTL */
         bottom: -8px;
         width: 60px;
         height: 3px;
-        background: linear-gradient(to right, #355E3B, #5a8c64);
+        background: linear-gradient(to left, #355E3B, #5a8c64); /* Adjusted for RTL */
         border-radius: 3px;
     }
 
@@ -147,7 +152,7 @@
 .about-content {
     background: #f8faf6;
     border-radius: 12px;
-    padding: 1.8rem;
+    padding: 1.5rem; /* Standardized padding */
     border-right: 4px solid #355E3B;
 }
 
@@ -159,7 +164,7 @@
 }
 
     .about-text i {
-        margin-left: 1rem;
+        margin-right: 1rem; /* Fixed for RTL */
         margin-top: 0.3rem;
         color: #5a8c64;
         font-size: 1.2rem;
@@ -174,7 +179,7 @@
     color: #355E3B;
     font-weight: 600;
     text-decoration: none;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     transition: all 0.3s ease;
 }
@@ -184,15 +189,20 @@
         text-decoration: underline;
     }
 
+    .view-all:focus {
+        outline: 3px solid #4a7a52;
+        outline-offset: 2px;
+    }
+
     .view-all i {
-        margin-right: 0.5rem;
+        margin-left: 0.5rem; /* Fixed for RTL */
         font-size: 0.9rem;
     }
 
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1.8rem;
+    gap: 1.5rem; /* Standardized gap */
     margin-top: 2rem;
 }
 
@@ -214,7 +224,7 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease; /* Standardized transition */
 }
 
 .product-card:hover .product-image {
@@ -239,43 +249,80 @@
 }
 
 /* التجاوبية */
+@media (max-width: 992px) {
+    .profile-header {
+        padding: 2.5rem 1.5rem;
+    }
 
-.profile-header {
-    padding: 2rem 1rem;
+    .profile-title {
+        font-size: 1.8rem;
+    }
+
+    .profile-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
 }
 
-.profile-title {
-    font-size: 1.6rem;
+@media (max-width: 768px) {
+    .profile-header {
+        padding: 2rem 1rem;
+    }
+
+    .profile-title {
+        font-size: 1.6rem;
+    }
+
+    .profile-subtitle {
+        font-size: 1rem;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .stat-item {
+        padding: 0;
+        border-left: none;
+    }
+
+    .profile-content {
+        padding: 1.5rem;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.profile-subtitle {
-    font-size: 1rem;
-}
+@media (max-width: 576px) {
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
 
-.stats-container {
-    flex-direction: column;
-    gap: 1.8rem;
-    padding: 1.5rem;
-}
+    .profile-header {
+        padding: 1.5rem 1rem;
+    }
 
-.stat-item {
-    padding: 0;
-    border-left: none !important;
-}
+    .profile-title {
+        font-size: 1.4rem;
+    }
 
-.profile-content {
-    padding: 1.5rem;
-}
+    .profile-subtitle {
+        font-size: 0.9rem;
+    }
 
-.product-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.2rem;
-}
+    .profile-content {
+        padding: 1rem;
+    }
 
-}
-
-
-.product-grid {
-    grid-template-columns: 1fr;
-}
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
 }
